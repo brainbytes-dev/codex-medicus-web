@@ -1,19 +1,34 @@
 "use client";
 
 import {
+  Activity,
   ArrowRight,
+  Baby,
+  Bone,
   Brain,
   CheckCircle2,
   ChevronDown,
+  Cross,
+  Droplets,
+  Ear,
+  Eye,
   FileText,
   FlaskConical,
+  HeartPulse,
   Heart,
   Microscope,
   Pill,
+  Radiation,
+  Scale,
+  Scan,
   Shield,
+  Skull,
+  Syringe,
   Stethoscope,
   Terminal,
+  Thermometer,
   Users,
+  Wind,
   Zap,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -44,13 +59,56 @@ const agents = [
   { name: "surgeon", desc: "Perioperative care, ERAS, complications", icon: Stethoscope, model: "opus" },
 ];
 
-const specialties = [
-  "Cardiology", "Pulmonology", "Gastroenterology", "Nephrology",
-  "Endocrinology", "Hematology-Oncology", "Rheumatology", "Infectious Disease",
-  "Neurology", "Psychiatry", "Pediatrics", "Gynecology",
-  "Anesthesiology", "Emergency Medicine", "Radiology", "Dermatology",
-  "Ophthalmology", "ENT", "Orthopedics", "Geriatrics",
-  "Pain Medicine", "Tropical Medicine", "Forensic Medicine", "General Practice",
+const specialtyGroups = [
+  {
+    category: "Internal Medicine",
+    items: [
+      { name: "Cardiology", icon: HeartPulse },
+      { name: "Pulmonology", icon: Wind },
+      { name: "Gastroenterology", icon: Activity },
+      { name: "Nephrology", icon: Droplets },
+      { name: "Endocrinology", icon: Scale },
+      { name: "Hematology-Oncology", icon: Microscope },
+      { name: "Rheumatology", icon: Bone },
+      { name: "Infectious Disease", icon: Syringe },
+      { name: "Geriatrics", icon: Users },
+      { name: "Intensive Care", icon: HeartPulse },
+    ],
+  },
+  {
+    category: "Surgery & Specialties",
+    items: [
+      { name: "General Surgery", icon: Cross },
+      { name: "Orthopedics", icon: Bone },
+      { name: "Neurosurgery", icon: Brain },
+      { name: "Cardiac Surgery", icon: Heart },
+      { name: "Emergency Medicine", icon: Zap },
+      { name: "Anesthesiology", icon: Thermometer },
+    ],
+  },
+  {
+    category: "Neurosciences & Diagnostics",
+    items: [
+      { name: "Neurology", icon: Brain },
+      { name: "Psychiatry", icon: Skull },
+      { name: "Radiology", icon: Scan },
+      { name: "Pathology", icon: Microscope },
+      { name: "Ophthalmology", icon: Eye },
+      { name: "ENT", icon: Ear },
+    ],
+  },
+  {
+    category: "Primary & Cross-Cutting",
+    items: [
+      { name: "Pediatrics", icon: Baby },
+      { name: "Gynecology", icon: Heart },
+      { name: "Dermatology", icon: Radiation },
+      { name: "General Practice", icon: Stethoscope },
+      { name: "Pain Medicine", icon: Pill },
+      { name: "Tropical Medicine", icon: Thermometer },
+      { name: "Rehabilitation", icon: Activity },
+    ],
+  },
 ];
 
 const commands = [
@@ -356,21 +414,44 @@ export default function Home() {
               35 Clinical Specialties
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Deep domain knowledge for every major medical discipline.
+              Deep domain knowledge for every major medical discipline — key conditions,
+              diagnostic approaches, first-line treatments, red flags, and current guidelines.
             </p>
           </FadeIn>
-          <StaggerChildren className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-2" staggerDelay={0.03}>
-            {specialties.map((s) => (
-              <StaggerItem key={s}>
-                <Badge
-                  variant="outline"
-                  className="cursor-default border-border/60 bg-surface px-3 py-1.5 text-xs text-muted-foreground transition-all hover:border-gold/30 hover:text-foreground hover:shadow-[0_0_15px_rgba(201,168,76,0.1)]"
-                >
-                  {s}
-                </Badge>
-              </StaggerItem>
+
+          <div className="mx-auto mt-16 grid max-w-5xl gap-10 md:grid-cols-2">
+            {specialtyGroups.map((group, gi) => (
+              <FadeIn key={group.category} delay={gi * 0.1} direction={gi % 2 === 0 ? "left" : "right"}>
+                <div>
+                  <h3 className="mb-4 text-xs font-semibold tracking-widest text-gold uppercase">
+                    {group.category}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {group.items.map((item) => (
+                      <motion.div
+                        key={item.name}
+                        whileHover={{ scale: 1.04, y: -2 }}
+                        whileTap={{ scale: 0.97 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                        className="group flex cursor-default items-center gap-3 rounded-lg border border-border/40 bg-card/30 px-4 py-3 transition-all hover:border-gold/25 hover:bg-card/60 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
+                      >
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-gold-dim transition-colors group-hover:bg-gold/20">
+                          <item.icon className="h-4 w-4 text-gold" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground/80 transition-colors group-hover:text-foreground">
+                          {item.name}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
             ))}
-          </StaggerChildren>
+          </div>
+
+          <FadeIn delay={0.4} className="mt-10 text-center text-sm text-muted-foreground">
+            + Angiology, Hepatology, Psychosomatic Medicine, Vascular Surgery, Forensic Medicine, and more
+          </FadeIn>
         </div>
       </section>
 
