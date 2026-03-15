@@ -10,11 +10,10 @@ import {
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn } from "@/components/animations";
 import { Footer } from "@/components/footer";
+import { InstallGuide } from "@/components/install-guide";
 
 interface PortalData {
   email: string;
@@ -70,7 +69,7 @@ export default function PortalPage() {
         </div>
       </nav>
 
-      <main className="flex-1 mx-auto max-w-xl px-6 py-20">
+      <main className="flex-1 mx-auto max-w-2xl px-6 py-20">
         <FadeIn className="text-center">
           <h1 className="font-serif text-3xl tracking-tight">Customer Portal</h1>
           <p className="mt-3 text-muted-foreground">
@@ -128,7 +127,7 @@ export default function PortalPage() {
 
               {/* Success */}
               {data && (
-                <div className="mt-6 space-y-4">
+                <div className="mt-6">
                   <div className="flex items-start gap-3 rounded-lg border border-green-500/20 bg-green-500/5 p-4">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-500" />
                     <div>
@@ -143,35 +142,19 @@ export default function PortalPage() {
                       </p>
                     </div>
                   </div>
-
-                  <Card className="border-gold/20">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="flex items-center gap-2 text-base">
-                        <RefreshCw className="h-4 w-4 text-gold" />
-                        Latest Version: v{data.currentVersion}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <a
-                        href={data.downloadUrl}
-                        className={cn(
-                          buttonVariants(),
-                          "w-full cursor-pointer gap-2 bg-cta text-cta-foreground hover:bg-cta/90"
-                        )}
-                      >
-                        <Download className="h-4 w-4" />
-                        Download v{data.currentVersion}
-                      </a>
-                      <p className="mt-3 text-center text-xs text-muted-foreground">
-                        Download link expires in 24 hours. Come back anytime for a fresh link.
-                      </p>
-                    </CardContent>
-                  </Card>
                 </div>
               )}
             </CardContent>
           </Card>
         </FadeIn>
+
+        {data && (
+          <InstallGuide
+            downloadUrl={data.downloadUrl}
+            version={data.currentVersion}
+            baseDelay={0.1}
+          />
+        )}
 
         {/* Help */}
         <FadeIn delay={0.2} className="mt-8 text-center text-sm text-muted-foreground">
