@@ -83,7 +83,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <img src="/logo-b.svg" alt="MedSynIQ" className="h-4 w-4 opacity-60" />
             <span className="text-sm text-muted-foreground">
-              MedSyn<span className="font-semibold">IQ</span> by ProFlow Labs AI
+              MedSyn<span className="font-semibold">IQ</span>
             </span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">

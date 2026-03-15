@@ -19,13 +19,19 @@ const sans = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: "MedSynIQ — Medical Intelligence for AI Assistants",
+  title: "MedSynIQ — Clinical Intelligence for AI Assistants",
   description:
     "27 specialized agents, 142 skills, 30 commands. The complete medical intelligence system for Claude Code, built by a physician.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "MedSynIQ",
     description:
-      "Medical intelligence for AI assistants. Built by a physician.",
+      "Clinical intelligence for AI assistants. Built by a physician.",
     type: "website",
   },
 };
