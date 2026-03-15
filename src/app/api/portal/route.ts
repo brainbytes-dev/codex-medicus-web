@@ -43,7 +43,9 @@ export async function POST(req: NextRequest) {
     });
 
     const session = sessions.data.find(
-      (s) => s.customer_email?.toLowerCase() === emailLower
+      (s) =>
+        s.customer_email?.toLowerCase() === emailLower ||
+        s.customer_details?.email?.toLowerCase() === emailLower
     );
 
     if (session) {

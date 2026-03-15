@@ -19,8 +19,8 @@ export async function POST(req: NextRequest) {
       session.payment_status === "no_payment_required";
 
     if (validPayment && session.metadata?.product === "codex-medicus-pro") {
-      // Get email from session or customer object
-      let email = session.customer_email;
+      // Get email: customer_email → customer_details.email → customer object
+      let email = session.customer_email || session.customer_details?.email;
 
       if (!email && session.customer) {
         const customer = await stripe.customers.retrieve(
