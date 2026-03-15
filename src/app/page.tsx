@@ -713,11 +713,17 @@ export default function Home() {
             </span>
           </div>
           <div className="flex items-center gap-6 text-xs text-muted-foreground">
+            <a href="/portal" className="transition-colors hover:text-foreground">
+              Customer Portal
+            </a>
             <a href="mailto:contact@brainbytes.dev" className="transition-colors hover:text-foreground">
               Contact
             </a>
             <a href="https://github.com/brainbytes-dev" className="transition-colors hover:text-foreground">
               GitHub
+            </a>
+            <a href="/imprint" className="transition-colors hover:text-foreground">
+              Imprint
             </a>
           </div>
         </div>
