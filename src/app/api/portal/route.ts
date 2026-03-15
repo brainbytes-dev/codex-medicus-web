@@ -4,7 +4,7 @@ import crypto from "crypto";
 
 function generateDownloadToken(email: string): string {
   const secret = process.env.DOWNLOAD_SECRET || "fallback-secret";
-  const expiry = Date.now() + 24 * 60 * 60 * 1000; // 24h
+  const expiry = Date.now() + 24 * 60 * 60 * 1000;
   const data = `${email}:${expiry}`;
   const hmac = crypto.createHmac("sha256", secret).update(data).digest("hex");
   return Buffer.from(`${data}:${hmac}`).toString("base64url");
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     const stripe = getStripe();
     const emailLower = email.toLowerCase();
 
-    // Strategy 1: Search ALL completed checkout sessions (includes $0 / 100% discount)
+    // Strategy 1: Search completed checkout sessions by customer_email
     const sessions = await stripe.checkout.sessions.list({
       limit: 100,
       status: "complete",
@@ -52,7 +52,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Strategy 2: Search customers + charges (paid purchases)
+    // Strategy 2: Search completed sessions by customer object email
+    // (handles 100% discount where customer_email is null but customer exists)
+    for (const s of sessions.data) {
+      if (s.customer && !s.customer_email) {
+        try {
+          const customer = await stripe.customers.retrieve(s.customer as string);
+          if ("email" in customer && customer.email?.toLowerCase() === emailLower) {
+            return NextResponse.json(
+              makeResponse(emailLower, s.created)
+            );
+          }
+        } catch {
+          // Customer might be deleted, skip
+        }
+      }
+    }
+
+    // Strategy 3: Search customers directly (catches all edge cases)
     const customers = await stripe.customers.list({
       email: emailLower,
       limit: 10,
@@ -75,35 +92,19 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Check subscriptions (future-proofing for abo model)
-      const subs = await stripe.subscriptions.list({
+      // Check if customer was created via checkout (has checkout metadata)
+      // This handles $0 purchases where there are no charges
+      const customerSessions = await stripe.checkout.sessions.list({
         customer: customer.id,
-        status: "active",
-        limit: 5,
+        limit: 10,
+        status: "complete",
       });
 
-      if (subs.data.length > 0) {
+      if (customerSessions.data.length > 0) {
         return NextResponse.json(
-          makeResponse(emailLower, subs.data[0].created)
+          makeResponse(emailLower, customerSessions.data[0].created)
         );
       }
-    }
-
-    // Strategy 3: Search payment intents (catches edge cases)
-    const paymentIntents = await stripe.paymentIntents.list({
-      limit: 50,
-    });
-
-    const matchingPI = paymentIntents.data.find(
-      (pi) =>
-        pi.status === "succeeded" &&
-        pi.receipt_email?.toLowerCase() === emailLower
-    );
-
-    if (matchingPI) {
-      return NextResponse.json(
-        makeResponse(emailLower, matchingPI.created)
-      );
     }
 
     return NextResponse.json(
