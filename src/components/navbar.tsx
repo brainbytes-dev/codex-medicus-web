@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Stethoscope } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,18 @@ import { LiteModal } from "@/components/lite-modal";
 
 export function Navbar() {
   const [liteOpen, setLiteOpen] = useState(false);
+  const pathname = usePathname();
+
+  const scrollTo = (hash: string) => {
+    if (pathname === "/") {
+      // Same page — just scroll
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Different page — navigate then scroll
+      window.location.href = "/" + hash;
+    }
+  };
 
   const handleCheckout = useCallback(async () => {
     try {
@@ -37,10 +50,10 @@ export function Navbar() {
             </span>
           </a>
           <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="/#features" className="transition-colors hover:text-foreground">Features</a>
-            <a href="/#agents" className="transition-colors hover:text-foreground">Agents</a>
-            <a href="/#pricing" className="transition-colors hover:text-foreground">Pricing</a>
-            <a href="/#faq" className="transition-colors hover:text-foreground">FAQ</a>
+            <button onClick={() => scrollTo("#features")} className="cursor-pointer transition-colors hover:text-foreground">Features</button>
+            <button onClick={() => scrollTo("#agents")} className="cursor-pointer transition-colors hover:text-foreground">Agents</button>
+            <button onClick={() => scrollTo("#pricing")} className="cursor-pointer transition-colors hover:text-foreground">Pricing</button>
+            <button onClick={() => scrollTo("#faq")} className="cursor-pointer transition-colors hover:text-foreground">FAQ</button>
           </div>
           <div className="flex items-center gap-3">
             <ThemeToggle />
