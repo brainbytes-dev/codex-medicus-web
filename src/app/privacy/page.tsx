@@ -1203,9 +1203,9 @@ export default function PrivacyPage() {
             <li><strong>Audience Building:</strong> Audience building (also known as &ldquo;Custom Audiences&rdquo;) refers to the determination of target groups for advertising purposes, e.g., the display of advertisements. For example, based on a user&rsquo;s interest in certain products or topics on the internet, it may be inferred that this user is interested in advertisements for similar products or the online shop in which they viewed the products. &ldquo;Lookalike Audiences&rdquo; (or similar audiences) refers to content deemed suitable being displayed to users whose profiles or interests presumably correspond to the users for whom the profiles were created. Cookies and web beacons are typically used for the purpose of creating Custom Audiences and Lookalike Audiences.</li>
           </ul>
           <p className="text-xs text-muted-foreground/50 mt-8">
-            Created with the free{" "}
+            Based on a template by{" "}
             <a href="https://datenschutz-generator.de/" target="_blank" rel="noopener noreferrer nofollow">
-              Privacy Policy Generator by Dr. Thomas Schwenke
+              Dr. Thomas Schwenke — Datenschutz-Generator.de
             </a>.
           </p>
         </article>
