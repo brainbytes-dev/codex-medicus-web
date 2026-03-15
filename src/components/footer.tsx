@@ -16,13 +16,13 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <Stethoscope className="h-4 w-4 text-gold/60" />
             <span className="text-sm text-muted-foreground">
-              Codex Medicus by Brain Bytes
+              Codex Medicus by ProFlow Labs AI
             </span>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
             <a href="/portal" className="transition-colors hover:text-foreground">Portal</a>
-            <a href="mailto:contact@brainbytes.dev" className="transition-colors hover:text-foreground">Contact</a>
-            <a href="https://github.com/brainbytes-dev" className="transition-colors hover:text-foreground">GitHub</a>
+            <a href="mailto:contact@proflowlabsai.com" className="transition-colors hover:text-foreground">Contact</a>
+            <a href="https://github.com/proflowlabs-ai" className="transition-colors hover:text-foreground">GitHub</a>
             <a href="/terms" className="transition-colors hover:text-foreground">Terms</a>
             <a href="/disclaimer" className="transition-colors hover:text-foreground">Disclaimer</a>
             <a href="/imprint" className="transition-colors hover:text-foreground">Imprint</a>

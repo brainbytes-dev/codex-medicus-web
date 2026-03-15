@@ -118,8 +118,8 @@ export default function PortalPage() {
                     <p className="mt-1 text-xs text-muted-foreground">
                       Make sure you&apos;re using the same email address from your Stripe checkout.
                       If you need help, contact{" "}
-                      <a href="mailto:contact@brainbytes.dev" className="text-gold underline underline-offset-2">
-                        contact@brainbytes.dev
+                      <a href="mailto:contact@proflowlabsai.com" className="text-gold underline underline-offset-2">
+                        contact@proflowlabsai.com
                       </a>
                     </p>
                   </div>
@@ -176,8 +176,8 @@ export default function PortalPage() {
         {/* Help */}
         <FadeIn delay={0.2} className="mt-8 text-center text-sm text-muted-foreground">
           Need help?{" "}
-          <a href="mailto:contact@brainbytes.dev" className="text-gold underline underline-offset-2">
-            contact@brainbytes.dev
+          <a href="mailto:contact@proflowlabsai.com" className="text-gold underline underline-offset-2">
+            contact@proflowlabsai.com
           </a>
         </FadeIn>
       </main>

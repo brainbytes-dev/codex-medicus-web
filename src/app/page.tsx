@@ -200,7 +200,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <ThemeToggle />
             <a
-              href="https://github.com/brainbytes-dev/codex-medicus-lite"
+              href="https://github.com/proflowlabs-ai/codex-medicus-lite"
               className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:block"
             >
               Try Lite
@@ -261,7 +261,7 @@ export default function Home() {
               Get Codex Medicus Pro
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="https://github.com/brainbytes-dev/codex-medicus-lite" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "cursor-pointer gap-2 border-border px-8 text-base")}>
+            <a href="https://github.com/proflowlabs-ai/codex-medicus-lite" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "cursor-pointer gap-2 border-border px-8 text-base")}>
               <Terminal className="h-4 w-4" />
               Try Lite — Free
             </a>
@@ -531,7 +531,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a href="https://github.com/brainbytes-dev/codex-medicus-lite" className={cn(buttonVariants({ variant: "outline" }), "mt-8 w-full cursor-pointer")}>
+                  <a href="https://github.com/proflowlabs-ai/codex-medicus-lite" className={cn(buttonVariants({ variant: "outline" }), "mt-8 w-full cursor-pointer")}>
                     Get Lite — Free
                   </a>
                 </CardContent>
@@ -591,7 +591,7 @@ export default function Home() {
           <FadeIn delay={0.3} className="mt-8 text-center">
             <p className="text-sm text-muted-foreground">
               Need enterprise pricing for your hospital or research institution?{" "}
-              <a href="mailto:contact@brainbytes.dev" className="text-gold underline underline-offset-4 transition-colors hover:text-gold/80">
+              <a href="mailto:contact@proflowlabsai.com" className="text-gold underline underline-offset-4 transition-colors hover:text-gold/80">
                 Contact us
               </a>
             </p>

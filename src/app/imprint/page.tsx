@@ -29,7 +29,7 @@ export default function ImprintPage() {
           <p>This website and the Codex Medicus platform are operated by:</p>
 
           <p>
-            <strong>HR Online Consulting LLC (doing business as Brain Bytes / Codex Medicus)</strong>
+            <strong>HR Online Consulting LLC (doing business as ProFlow Labs AI / Codex Medicus)</strong>
             <br />
             Incorporated under the laws of the Catawba Indian Nation of the Carolinas,
             <br />

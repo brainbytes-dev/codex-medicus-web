@@ -28,7 +28,7 @@ export default function DisclaimerPage() {
 
           <h2>Website Disclaimer</h2>
           <p>
-            The information provided by HR Online Consulting LLC, doing business as Brain Bytes
+            The information provided by HR Online Consulting LLC, doing business as ProFlow Labs AI
             and Codex Medicus (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) on this
             website and within the Codex Medicus platform is intended for general informational
             purposes only. All content is published in good faith; however, we make no

@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
   // For now: redirect to a pre-built ZIP hosted on GitHub Releases or R2/S3
   // Replace this URL with your actual download location
   const version = process.env.NEXT_PUBLIC_CURRENT_VERSION || "1.0.0";
-  const downloadUrl = `https://github.com/brainbytes-dev/codex-medicus/releases/download/v${version}/codex-medicus-pro-v${version}.zip`;
+  const downloadUrl = `https://github.com/proflowlabs-ai/codex-medicus/releases/download/v${version}/codex-medicus-pro-v${version}.zip`;
 
   console.log("Download served:", { email, version });
 

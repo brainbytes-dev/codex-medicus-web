@@ -28,7 +28,7 @@ export default function TermsPage() {
 
           <h2>Agreement to Legal Terms</h2>
           <p>
-            We are HR Online Consulting LLC, doing business as Brain Bytes and Codex Medicus
+            We are HR Online Consulting LLC, doing business as ProFlow Labs AI and Codex Medicus
             (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;).
             We provide the Codex Medicus medical intelligence platform and related services
             (collectively, the &ldquo;Services&rdquo;).

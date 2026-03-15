@@ -6,6 +6,6 @@ export async function GET() {
     currentVersion: process.env.NEXT_PUBLIC_CURRENT_VERSION || "1.0.0",
     releaseDate: "2026-03-15",
     changelog: "Initial release — 27 agents, 142 skills, 30 commands",
-    updateUrl: "https://codex-medicus.brainbytes.dev/portal",
+    updateUrl: "https://codex-medicus.proflowlabsai.com/portal",
   });
 }
