@@ -49,8 +49,9 @@ export async function POST(req: NextRequest) {
     );
 
     if (session) {
+      const sessionEmail = session.customer_email || session.customer_details?.email || emailLower;
       return NextResponse.json(
-        makeResponse(session.customer_email!, session.created)
+        makeResponse(sessionEmail, session.created)
       );
     }
 
