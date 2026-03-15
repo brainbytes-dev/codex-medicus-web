@@ -42,7 +42,7 @@ export function Navbar() {
       <nav className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <a href="/" className="flex items-center gap-1.5">
-            <img src="/logo-b.svg" alt="MedSynIQ" width={44} height={44} className="h-[44px] w-[44px]" />
+            <img src="/logo-b.svg" alt="MedSynIQ" width={32} height={32} className="h-8 w-8" />
             <span className="text-xl tracking-wide text-foreground">
               MedSyn<span className="font-bold">IQ</span>
             </span>
