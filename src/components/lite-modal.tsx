@@ -135,7 +135,7 @@ export function LiteModal({
                     By continuing you agree to our{" "}
                     <a href="/terms" target="_blank" className="underline underline-offset-2 hover:text-foreground">Terms</a>
                     {" "}and{" "}
-                    <a href="/disclaimer" target="_blank" className="underline underline-offset-2 hover:text-foreground">Privacy Policy</a>.
+                    <a href="/privacy" target="_blank" className="underline underline-offset-2 hover:text-foreground">Privacy Policy</a>.
                   </p>
                 </>
               ) : (
