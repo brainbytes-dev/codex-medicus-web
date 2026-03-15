@@ -14,6 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { FadeIn } from "@/components/animations";
+import { Footer } from "@/components/footer";
 
 interface PortalData {
   email: string;
@@ -56,7 +57,7 @@ export default function PortalPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex min-h-screen flex-col bg-background">
       {/* Nav */}
       <nav className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-4xl items-center px-6">
@@ -69,7 +70,7 @@ export default function PortalPage() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-xl px-6 py-20">
+      <main className="flex-1 mx-auto max-w-xl px-6 py-20">
         <FadeIn className="text-center">
           <h1 className="font-serif text-3xl tracking-tight">Customer Portal</h1>
           <p className="mt-3 text-muted-foreground">
@@ -180,6 +181,7 @@ export default function PortalPage() {
           </a>
         </FadeIn>
       </main>
+      <Footer />
     </div>
   );
 }

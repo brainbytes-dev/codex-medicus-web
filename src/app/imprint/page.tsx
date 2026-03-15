@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Stethoscope } from "lucide-react";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Imprint | Codex Medicus",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ImprintPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex min-h-screen flex-col bg-background">
       <nav className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-4xl items-center px-6">
           <a href="/" className="flex items-center gap-2.5">
@@ -20,7 +21,7 @@ export default function ImprintPage() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-6 py-16">
+      <main className="flex-1 mx-auto max-w-3xl px-6 py-16">
         <article className="prose prose-sm prose-invert max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h1:text-3xl prose-h2:mt-10 prose-h2:text-xl prose-a:text-gold prose-a:underline-offset-2 prose-strong:text-foreground">
           <h1>Imprint</h1>
           <p className="text-muted-foreground">Last updated: March 15, 2026</p>
@@ -86,6 +87,7 @@ export default function ImprintPage() {
           </p>
         </article>
       </main>
+      <Footer />
     </div>
   );
 }
