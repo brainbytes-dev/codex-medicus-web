@@ -80,9 +80,9 @@ export function Footer() {
       {/* Bottom footer */}
       <footer className="border-t border-border/50 py-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
-          <div className="flex items-center gap-2">
-            <img src="/logo-b.svg" alt="MedSynIQ" className="h-4 w-4 opacity-60" />
-            <span className="text-sm text-muted-foreground">
+          <div className="flex items-center gap-1.5">
+            <img src="/logo-b.svg" alt="MedSynIQ" className="h-7 w-7" />
+            <span className="text-base text-muted-foreground">
               MedSyn<span className="font-semibold">IQ</span>
             </span>
           </div>
