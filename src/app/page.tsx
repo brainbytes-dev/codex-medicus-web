@@ -52,13 +52,11 @@ import { Footer } from "@/components/footer";
 
 const agents = [
   { name: "clinical-reasoner", desc: "Differential diagnosis, Bayesian reasoning", icon: Brain, model: "opus" },
-  { name: "evidence-appraiser", desc: "Critical appraisal, GRADE, NNT/NNH", icon: FileText, model: "opus" },
+  { name: "evidence-appraiser", desc: "GRADE scoring, bias assessment", icon: FileText, model: "opus" },
   { name: "pharmacologist", desc: "Drug interactions, CYP450, dosing", icon: Pill, model: "opus" },
-  { name: "biostatistician", desc: "Hypothesis testing, survival analysis", icon: FlaskConical, model: "opus" },
+  { name: "biostatistician", desc: "Power analysis, survival models", icon: FlaskConical, model: "opus" },
   { name: "emergency-physician", desc: "ABCDE, triage, resuscitation", icon: Zap, model: "opus" },
-  { name: "intensivist", desc: "Ventilation, sepsis bundles, ICU", icon: Heart, model: "opus" },
-  { name: "oncologist", desc: "TNM staging, immunotherapy, tumor boards", icon: Microscope, model: "opus" },
-  { name: "surgeon", desc: "Perioperative care, ERAS, complications", icon: Stethoscope, model: "opus" },
+  { name: "systematic-reviewer", desc: "PRISMA workflows, meta-analysis", icon: Microscope, model: "opus" },
 ];
 
 const specialtyGroups = [
@@ -108,17 +106,34 @@ const specialtyGroups = [
   },
 ];
 
-const commands = [
-  { cmd: "/differential", desc: "Generate structured differential diagnosis" },
-  { cmd: "/drug-check", desc: "Check interactions, doses, contraindications" },
-  { cmd: "/evidence-search", desc: "Search evidence using PICO framework" },
-  { cmd: "/lab-interpret", desc: "Interpret laboratory panels with correlation" },
-  { cmd: "/study-design", desc: "Design a clinical study with endpoints" },
-  { cmd: "/sample-size", desc: "Calculate sample size and power" },
-  { cmd: "/manuscript", desc: "Structure papers with reporting guidelines" },
-  { cmd: "/tumor-board", desc: "Prepare tumor board presentations" },
-  { cmd: "/guideline", desc: "Find and interpret clinical guidelines" },
-  { cmd: "/meta-analysis", desc: "Design and interpret meta-analyses" },
+const commandGroups = [
+  {
+    category: "Clinical",
+    commands: [
+      { cmd: "/differential", desc: "Structured differential diagnosis" },
+      { cmd: "/drug-check", desc: "Interactions, doses, contraindications" },
+      { cmd: "/lab-interpret", desc: "Laboratory panel interpretation" },
+      { cmd: "/guideline", desc: "Clinical guideline lookup" },
+    ],
+  },
+  {
+    category: "Research",
+    commands: [
+      { cmd: "/evidence-search", desc: "PICO-based evidence search" },
+      { cmd: "/study-design", desc: "Clinical study design" },
+      { cmd: "/meta-analysis", desc: "Meta-analysis framework" },
+      { cmd: "/sample-size", desc: "Power and sample size" },
+    ],
+  },
+  {
+    category: "Writing",
+    commands: [
+      { cmd: "/manuscript", desc: "CONSORT/STROBE structure" },
+      { cmd: "/abstract", desc: "Structured abstract writing" },
+      { cmd: "/tumor-board", desc: "Tumor board presentation" },
+      { cmd: "/grant", desc: "Grant application structure" },
+    ],
+  },
 ];
 
 const faqs = [
@@ -145,6 +160,10 @@ const faqs = [
   {
     q: "Can I try before I buy?",
     a: "Yes. MedSynIQ Lite is completely free and open-source, with 5 agents, 20 skills, and 10 commands covering the essentials.",
+  },
+  {
+    q: "Does MedSynIQ replace clinical judgment?",
+    a: "No. MedSynIQ is designed to support evidence exploration and structured reasoning. Final clinical decisions remain the sole responsibility of qualified healthcare professionals. All outputs include evidence levels and must be independently verified.",
   },
 ];
 
@@ -195,7 +214,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="font-serif text-4xl leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl"
           >
-            Medical Intelligence
+            Clinical Intelligence
             <br />
             <span className="gradient-gold animate-gradient">for AI Assistants</span>
           </motion.h1>
@@ -206,9 +225,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
-            27 specialized agents. 142 domain skills. 30 commands.
-            From differential diagnosis to meta-analysis — clinical expertise
-            that thinks like a physician.
+            Structured medical reasoning, evidence citations, and safety checks — so your AI thinks like a physician, not a chatbot.
           </motion.p>
 
           <motion.div
@@ -238,7 +255,7 @@ export default function Home() {
               <div className="h-3 w-3 rounded-full bg-red-500/60" />
               <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
               <div className="h-3 w-3 rounded-full bg-green-500/60" />
-              <span className="ml-2 text-xs text-muted-foreground">claude</span>
+              <span className="ml-2 text-xs text-muted-foreground">Claude Code</span>
             </div>
             <div className="space-y-3 bg-card/40 p-6 text-left font-mono text-sm">
               <p className="text-muted-foreground">
@@ -261,7 +278,7 @@ export default function Home() {
                   <br />
                   <span className="text-foreground">3. Pulmonary embolism</span> — Pre-test: 2%
                   <br />
-                  <span className="mt-2 block text-xs text-gold">
+                  <span className="mt-2 block border-l-2 border-gold pl-2 text-xs text-gold">
                     Evidence: ESC 2023 STEMI Guidelines, Level I-A
                   </span>
                 </p>
@@ -289,6 +306,13 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Trust Badges */}
+      <div className="flex items-center justify-center gap-6 py-6 text-xs text-muted-foreground">
+        <span className="flex items-center gap-1.5"><Shield className="h-3.5 w-3.5 text-gold" /> Evidence-based</span>
+        <span className="flex items-center gap-1.5"><Shield className="h-3.5 w-3.5 text-gold" /> Privacy-first</span>
+        <span className="flex items-center gap-1.5"><Shield className="h-3.5 w-3.5 text-gold" /> Physician-built</span>
+      </div>
 
       {/* Features */}
       <section id="features" className="py-20 md:py-32">
@@ -355,7 +379,7 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          <StaggerChildren className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" staggerDelay={0.06}>
+          <StaggerChildren className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.06}>
             {agents.map((a) => (
               <StaggerItem key={a.name}>
                 <MagneticHover>
@@ -377,7 +401,7 @@ export default function Home() {
           </StaggerChildren>
 
           <FadeIn delay={0.3} className="mt-6 text-center text-sm text-muted-foreground">
-            + 19 more agents including systematic-reviewer, biostatistician, regulatory-affairs, precision-medicine, and more
+            + 21 additional agents including intensivist, oncologist, surgeon, precision-medicine, and more
           </FadeIn>
         </div>
       </section>
@@ -442,19 +466,28 @@ export default function Home() {
               Type a command. Get clinical-grade output.
             </p>
           </FadeIn>
-          <div className="mx-auto mt-12 max-w-3xl space-y-1">
-            {commands.map((c, i) => (
-              <FadeIn key={c.cmd} delay={i * 0.05} direction="right">
-                <div className="flex items-center justify-between rounded-lg px-4 py-3 transition-all hover:bg-surface hover:translate-x-1">
-                  <code className="text-sm font-semibold text-gold">{c.cmd}</code>
-                  <span className="text-sm text-muted-foreground">{c.desc}</span>
+          <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-3">
+            {commandGroups.map((group, gi) => (
+              <FadeIn key={group.category} delay={gi * 0.1}>
+                <div>
+                  <h3 className="mb-4 text-xs font-semibold tracking-widest text-gold uppercase">
+                    {group.category}
+                  </h3>
+                  <div className="space-y-1">
+                    {group.commands.map((c) => (
+                      <div key={c.cmd} className="rounded-lg px-3 py-2.5 transition-all hover:bg-surface">
+                        <code className="text-sm font-semibold text-gold">{c.cmd}</code>
+                        <p className="mt-0.5 text-xs text-muted-foreground">{c.desc}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </FadeIn>
             ))}
-            <FadeIn delay={0.5} className="pt-2 text-center text-sm text-muted-foreground">
-              + 20 more commands
-            </FadeIn>
           </div>
+          <FadeIn delay={0.4} className="mt-8 text-center text-sm text-muted-foreground">
+            + 18 more commands
+          </FadeIn>
         </div>
       </section>
 
@@ -538,6 +571,9 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-4 text-center text-xs text-muted-foreground">
+                    Runs locally in your AI environment. No patient data leaves your system.
+                  </p>
                   <button onClick={handleCheckout} className={cn(buttonVariants(), "mt-8 w-full cursor-pointer gap-2 bg-cta text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>
                     Get MedSynIQ Pro
                     <ArrowRight className="h-4 w-4" />
@@ -567,8 +603,7 @@ export default function Home() {
               Built by a Physician
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-              Every agent, every skill, every clinical score has been reviewed for accuracy.
-              This is structured clinical knowledge, built the way a physician thinks.
+              MedSynIQ encodes structured clinical thinking — not generic AI prompts. Every agent, skill, and score has been reviewed for accuracy.
             </p>
           </FadeIn>
 
@@ -641,8 +676,7 @@ export default function Home() {
               <span className="gradient-gold animate-gradient">one install away.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-lg text-muted-foreground">
-              Join medical professionals who use AI the way it should be used —
-              with evidence, with safety checks, with clinical rigor.
+              Install MedSynIQ Lite and see how AI can reason with evidence, cite guidelines, and check drug interactions.
             </p>
             <div className="mt-10">
               <button onClick={handleCheckout} className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-cta px-8 text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>

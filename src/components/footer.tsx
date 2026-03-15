@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Loader2, Stethoscope } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -81,9 +81,9 @@ export function Footer() {
       <footer className="border-t border-border/50 py-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
           <div className="flex items-center gap-2">
-            <Stethoscope className="h-4 w-4 text-gold/60" />
+            <img src="/logo-b.svg" alt="MedSynIQ" className="h-4 w-4 opacity-60" />
             <span className="text-sm text-muted-foreground">
-              MedSynIQ by ProFlow Labs AI
+              MedSyn<span className="font-semibold">IQ</span> by ProFlow Labs AI
             </span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">

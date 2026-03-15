@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Stethoscope } from "lucide-react";
+import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -42,11 +42,9 @@ export function Navbar() {
       <nav className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
           <a href="/" className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
-              <Stethoscope className="h-4 w-4 text-gold" />
-            </div>
-            <span className="font-serif text-lg tracking-wide text-foreground">
-              MedSynIQ
+            <img src="/logo-b.svg" alt="MedSynIQ" width={28} height={28} className="h-7 w-7" />
+            <span className="text-lg tracking-wide text-foreground">
+              MedSyn<span className="font-bold">IQ</span>
             </span>
           </a>
           <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
