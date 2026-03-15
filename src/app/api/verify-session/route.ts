@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
+import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,16 +10,30 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ valid: false }, { status: 400 });
     }
 
-    const session = await getStripe().checkout.sessions.retrieve(sessionId);
+    const stripe = getStripe();
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-    if (
-      session.payment_status === "paid" &&
-      session.metadata?.product === "codex-medicus-pro"
-    ) {
-      // Generate a download token for this customer
-      const crypto = await import("crypto");
+    // Accept both "paid" and "no_payment_required" (100% discount)
+    const validPayment =
+      session.payment_status === "paid" ||
+      session.payment_status === "no_payment_required";
+
+    if (validPayment && session.metadata?.product === "codex-medicus-pro") {
+      // Get email from session or customer object
+      let email = session.customer_email;
+
+      if (!email && session.customer) {
+        const customer = await stripe.customers.retrieve(
+          session.customer as string
+        );
+        if ("email" in customer && customer.email) {
+          email = customer.email;
+        }
+      }
+
+      email = email || "unknown";
+
       const secret = process.env.DOWNLOAD_SECRET || "fallback-secret";
-      const email = session.customer_email || "unknown";
       const expiry = Date.now() + 24 * 60 * 60 * 1000;
       const data = `${email}:${expiry}`;
       const hmac = crypto
@@ -29,7 +44,7 @@ export async function POST(req: NextRequest) {
 
       return NextResponse.json({
         valid: true,
-        email: session.customer_email,
+        email,
         downloadUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/download?token=${token}`,
         version: process.env.NEXT_PUBLIC_CURRENT_VERSION || "1.0.0",
       });

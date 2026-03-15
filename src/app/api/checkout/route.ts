@@ -7,8 +7,8 @@ export async function POST(req: NextRequest) {
 
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
-      payment_method_types: ["card"],
       customer_email: email || undefined,
+      customer_creation: "always",
       line_items: [
         {
           price: process.env.STRIPE_PRICE_ID!,
