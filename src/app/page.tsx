@@ -127,7 +127,7 @@ const commands = [
 const faqs = [
   {
     q: "Is this a medical device?",
-    a: "No. Codex Medicus is an AI-assisted tool for informational and educational purposes only. It is not a medical device, does not provide medical advice, and is not a substitute for professional clinical judgment.",
+    a: "No. MedSynIQ is an AI-assisted tool for informational and educational purposes only. It is not a medical device, does not provide medical advice, and is not a substitute for professional clinical judgment.",
   },
   {
     q: "Who is this built for?",
@@ -139,15 +139,15 @@ const faqs = [
   },
   {
     q: "How is this different from ChatGPT for medical questions?",
-    a: "Codex Medicus provides structured clinical reasoning with 142 specialized skills that enforce evidence levels (GRADE/CEBM), cite specific guidelines (ESC, AHA, NICE, AWMF), and include safety checks for drug interactions and contraindications. It thinks like a clinician, not a chatbot.",
+    a: "MedSynIQ provides structured clinical reasoning with 142 specialized skills that enforce evidence levels (GRADE/CEBM), cite specific guidelines (ESC, AHA, NICE, AWMF), and include safety checks for drug interactions and contraindications. It thinks like a clinician, not a chatbot.",
   },
   {
     q: "Is my patient data safe?",
-    a: "Codex Medicus includes HIPAA/GDPR-compliant hooks that actively scan for and flag Protected Health Information (PHI). The plugin runs locally — no patient data is sent to our servers.",
+    a: "MedSynIQ includes HIPAA/GDPR-compliant hooks that actively scan for and flag Protected Health Information (PHI). The plugin runs locally — no patient data is sent to our servers.",
   },
   {
     q: "Can I try before I buy?",
-    a: "Yes. Codex Medicus Lite is completely free and open-source, with 5 agents, 20 skills, and 10 commands covering the essentials.",
+    a: "Yes. MedSynIQ Lite is completely free and open-source, with 5 agents, 20 skills, and 10 commands covering the essentials.",
   },
 ];
 
@@ -188,7 +188,7 @@ export default function Home() {
               <Stethoscope className="h-4 w-4 text-gold" />
             </div>
             <span className="font-serif text-lg tracking-wide text-foreground">
-              Codex Medicus
+              MedSynIQ
             </span>
           </div>
           <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
@@ -258,7 +258,7 @@ export default function Home() {
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
             <button onClick={handleCheckout} className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-cta px-8 text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>
-              Get Codex Medicus Pro
+              Get MedSynIQ Pro
               <ArrowRight className="h-4 w-4" />
             </button>
             <button onClick={() => setLiteOpen(true)} className={cn(buttonVariants({ size: "lg", variant: "outline" }), "cursor-pointer gap-2 border-border px-8 text-base")}>
@@ -579,7 +579,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <button onClick={handleCheckout} className={cn(buttonVariants(), "mt-8 w-full cursor-pointer gap-2 bg-cta text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>
-                    Get Codex Medicus Pro
+                    Get MedSynIQ Pro
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 </CardContent>
@@ -686,7 +686,7 @@ export default function Home() {
             </p>
             <div className="mt-10">
               <button onClick={handleCheckout} className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-cta px-8 text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>
-                Get Codex Medicus Pro — $149
+                Get MedSynIQ Pro — $149
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>

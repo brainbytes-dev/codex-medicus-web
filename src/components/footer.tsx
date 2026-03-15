@@ -68,7 +68,7 @@ export function Footer() {
 
             {/* Disclaimer */}
             <div className="text-xs leading-relaxed text-muted-foreground/60">
-              <strong className="text-muted-foreground/80">Medical Disclaimer:</strong> Codex Medicus
+              <strong className="text-muted-foreground/80">Medical Disclaimer:</strong> MedSynIQ
               provides AI-assisted tools for informational and educational purposes only. It is not
               a medical device and does not provide medical advice, diagnosis, or treatment. All
               clinical outputs must be verified by qualified healthcare professionals.
@@ -83,7 +83,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <Stethoscope className="h-4 w-4 text-gold/60" />
             <span className="text-sm text-muted-foreground">
-              Codex Medicus by ProFlow Labs AI
+              MedSynIQ by ProFlow Labs AI
             </span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">

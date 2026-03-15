@@ -54,7 +54,7 @@ function SuccessContent() {
               <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
                 <Stethoscope className="h-4 w-4 text-gold" />
               </div>
-              <span className="font-serif text-lg tracking-wide">Codex Medicus</span>
+              <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
             </a>
           </div>
         </nav>
@@ -78,7 +78,7 @@ function SuccessContent() {
               <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
                 <Stethoscope className="h-4 w-4 text-gold" />
               </div>
-              <span className="font-serif text-lg tracking-wide">Codex Medicus</span>
+              <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
             </a>
           </div>
         </nav>
@@ -89,7 +89,7 @@ function SuccessContent() {
             </div>
             <h1 className="font-serif text-2xl">Access Denied</h1>
             <p className="mt-3 text-muted-foreground">
-              This page requires a valid purchase. If you already bought Codex Medicus Pro,
+              This page requires a valid purchase. If you already bought MedSynIQ Pro,
               use the Customer Portal to download your copy.
             </p>
             <div className="mt-8 flex flex-col gap-3">
@@ -97,7 +97,7 @@ function SuccessContent() {
                 Go to Customer Portal
               </a>
               <a href="/#pricing" className={cn(buttonVariants({ variant: "outline" }), "cursor-pointer")}>
-                Purchase Codex Medicus Pro
+                Purchase MedSynIQ Pro
               </a>
             </div>
           </div>
@@ -115,7 +115,7 @@ function SuccessContent() {
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
               <Stethoscope className="h-4 w-4 text-gold" />
             </div>
-            <span className="font-serif text-lg tracking-wide">Codex Medicus</span>
+            <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
           </a>
         </div>
       </nav>
@@ -126,7 +126,7 @@ function SuccessContent() {
             <CheckCircle2 className="h-8 w-8 text-green-500" />
           </div>
           <h1 className="font-serif text-3xl tracking-tight md:text-4xl">
-            Welcome to Codex Medicus Pro
+            Welcome to MedSynIQ Pro
           </h1>
           <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
             Your purchase was successful. Follow the steps below to install and start using

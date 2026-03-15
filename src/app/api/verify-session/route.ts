@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
       session.payment_status === "paid" ||
       session.payment_status === "no_payment_required";
 
-    if (validPayment && session.metadata?.product === "codex-medicus-pro") {
+    if (validPayment && session.metadata?.product === "medsyniq-pro") {
       // Get email: customer_email → customer_details.email → customer object
       let email = session.customer_email || session.customer_details?.email;
 

@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       await stripe.customers.create({
         email: email.toLowerCase(),
         metadata: {
-          source: "codex-medicus-lite",
+          source: "medsyniq-lite",
           newsletter: newsletter ? "yes" : "no",
           signup_date: new Date().toISOString(),
         },

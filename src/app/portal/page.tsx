@@ -64,7 +64,7 @@ export default function PortalPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
               <Stethoscope className="h-4 w-4 text-gold" />
             </div>
-            <span className="font-serif text-lg tracking-wide">Codex Medicus</span>
+            <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
           </a>
         </div>
       </nav>
@@ -73,7 +73,7 @@ export default function PortalPage() {
         <FadeIn className="text-center">
           <h1 className="font-serif text-3xl tracking-tight">Customer Portal</h1>
           <p className="mt-3 text-muted-foreground">
-            Enter the email you used to purchase Codex Medicus Pro to access your download.
+            Enter the email you used to purchase MedSynIQ Pro to access your download.
           </p>
         </FadeIn>
 

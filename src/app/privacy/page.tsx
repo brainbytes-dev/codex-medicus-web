@@ -3,7 +3,7 @@ import { Stethoscope } from "lucide-react";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Codex Medicus",
+  title: "Privacy Policy | MedSynIQ",
   robots: { index: false, follow: true },
 };
 
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
               <Stethoscope className="h-4 w-4 text-gold" />
             </div>
-            <span className="font-serif text-lg tracking-wide">Codex Medicus</span>
+            <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
           </a>
         </div>
       </nav>
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
 
           <h2>1. Who We Are</h2>
           <p>
-            This website and the Codex Medicus platform are operated by HR Online Consulting LLC,
+            This website and the MedSynIQ platform are operated by HR Online Consulting LLC,
             doing business as ProFlow Labs AI (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;).
           </p>
           <p>
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
           <h2>2. What Data We Collect</h2>
           <p>We collect the following personal data:</p>
           <ul>
-            <li><strong>Email address</strong> — when you sign up for Codex Medicus Lite, purchase Pro, subscribe to our newsletter, or contact us.</li>
+            <li><strong>Email address</strong> — when you sign up for MedSynIQ Lite, purchase Pro, subscribe to our newsletter, or contact us.</li>
             <li><strong>Payment information</strong> — processed securely by Stripe. We do not store credit card numbers.</li>
             <li><strong>Usage data</strong> — basic analytics (page views, referral source) collected via privacy-respecting analytics.</li>
           </ul>
@@ -104,9 +104,9 @@ export default function PrivacyPage() {
             We do not use tracking cookies or third-party advertising cookies.
           </p>
 
-          <h2>9. The Codex Medicus Plugin</h2>
+          <h2>9. The MedSynIQ Plugin</h2>
           <p>
-            The Codex Medicus plugin runs locally on your device. It does not transmit data to our
+            The MedSynIQ plugin runs locally on your device. It does not transmit data to our
             servers during use. The only network request is an optional version check on session
             start, which sends no personal data.
           </p>

@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/#pricing`,
       allow_promotion_codes: true,
       metadata: {
-        product: "codex-medicus-pro",
+        product: "medsyniq-pro",
         version: process.env.NEXT_PUBLIC_CURRENT_VERSION || "1.0.0",
       },
     });

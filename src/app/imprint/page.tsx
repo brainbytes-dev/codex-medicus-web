@@ -3,7 +3,7 @@ import { Stethoscope } from "lucide-react";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Imprint | Codex Medicus",
+  title: "Imprint | MedSynIQ",
   robots: { index: false, follow: true },
 };
 
@@ -16,7 +16,7 @@ export default function ImprintPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
               <Stethoscope className="h-4 w-4 text-gold" />
             </div>
-            <span className="font-serif text-lg tracking-wide">Codex Medicus</span>
+            <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
           </a>
         </div>
       </nav>
@@ -26,10 +26,10 @@ export default function ImprintPage() {
           <h1>Imprint</h1>
           <p className="text-muted-foreground">Last updated: March 15, 2026</p>
 
-          <p>This website and the Codex Medicus platform are operated by:</p>
+          <p>This website and the MedSynIQ platform are operated by:</p>
 
           <p>
-            <strong>HR Online Consulting LLC (doing business as ProFlow Labs AI / Codex Medicus)</strong>
+            <strong>HR Online Consulting LLC (doing business as ProFlow Labs AI / MedSynIQ)</strong>
             <br />
             Incorporated under the laws of the Catawba Indian Nation of the Carolinas,
             <br />
@@ -73,7 +73,7 @@ export default function ImprintPage() {
 
           <h2>Medical Disclaimer</h2>
           <p>
-            Codex Medicus is an educational tool for medical professionals. It does not provide
+            MedSynIQ is an educational tool for medical professionals. It does not provide
             medical advice, diagnosis, or treatment. All clinical outputs are AI-generated and must
             be verified by qualified healthcare professionals before any patient care decisions.
             The operator assumes no liability for clinical decisions made with the assistance of

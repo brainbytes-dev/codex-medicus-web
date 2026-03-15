@@ -95,7 +95,7 @@ export function LiteModal({
                   <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-lg bg-gold-dim">
                     <Terminal className="h-5 w-5 text-gold" />
                   </div>
-                  <h3 className="mt-3 font-serif text-xl">Get Codex Medicus Lite</h3>
+                  <h3 className="mt-3 font-serif text-xl">Get MedSynIQ Lite</h3>
                   <p className="mt-2 text-sm text-muted-foreground">
                     Enter your email to get the install instructions. Free forever — 5 agents, 20 skills, 10 commands.
                   </p>
@@ -144,7 +144,7 @@ export function LiteModal({
                   <div className="mb-1 flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/10">
                     <CheckCircle2 className="h-5 w-5 text-green-500" />
                   </div>
-                  <h3 className="mt-3 font-serif text-xl">Install Codex Medicus Lite</h3>
+                  <h3 className="mt-3 font-serif text-xl">Install MedSynIQ Lite</h3>
                   <p className="mt-2 text-sm text-muted-foreground">
                     Two steps. Takes 30 seconds.
                   </p>
@@ -169,8 +169,8 @@ export function LiteModal({
                         <span className="text-sm font-medium">Install the plugin</span>
                       </div>
                       <div className="flex items-center rounded-lg border border-border bg-background p-3 font-mono text-xs">
-                        <code className="flex-1 overflow-x-auto">claude plugins install github:ProFlow-Labs-Ai/codex-medicus-lite</code>
-                        <CopyBtn text="claude plugins install github:ProFlow-Labs-Ai/codex-medicus-lite" />
+                        <code className="flex-1 overflow-x-auto">claude plugins install github:ProFlow-Labs-Ai/medsyniq-lite</code>
+                        <CopyBtn text="claude plugins install github:ProFlow-Labs-Ai/medsyniq-lite" />
                       </div>
                     </div>
 

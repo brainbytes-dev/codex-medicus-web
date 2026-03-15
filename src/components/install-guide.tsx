@@ -53,7 +53,7 @@ export function InstallGuide({
               <Download className="h-5 w-5 text-gold" />
             </div>
             <div>
-              <CardTitle className="text-lg">Download Codex Medicus Pro</CardTitle>
+              <CardTitle className="text-lg">Download MedSynIQ Pro</CardTitle>
               <p className="text-sm text-muted-foreground">Version {version} — ZIP Archive</p>
             </div>
           </CardHeader>
@@ -63,7 +63,7 @@ export function InstallGuide({
               className={cn(buttonVariants(), "w-full cursor-pointer gap-2 bg-cta text-cta-foreground hover:bg-cta/90")}
             >
               <Download className="h-4 w-4" />
-              Download codex-medicus-pro-v{version}.zip
+              Download medsyniq-pro-v{version}.zip
             </a>
             <p className="mt-3 text-center text-xs text-muted-foreground">
               Download link expires in 24 hours. Visit the{" "}
@@ -109,10 +109,10 @@ export function InstallGuide({
                 <h3 className="font-semibold">Unzip the download</h3>
               </div>
               <p className="ml-10 text-sm text-muted-foreground">
-                Unzip <code className="rounded bg-muted px-1.5 py-0.5 text-xs">codex-medicus-pro-v{version}.zip</code> to a folder, e.g.:
+                Unzip <code className="rounded bg-muted px-1.5 py-0.5 text-xs">medsyniq-pro-v{version}.zip</code> to a folder, e.g.:
               </p>
               <div className="ml-10 mt-2 flex items-center rounded-lg border border-border bg-card p-3 font-mono text-sm">
-                <code>~/codex-medicus</code>
+                <code>~/medsyniq</code>
               </div>
             </div>
 
@@ -125,8 +125,8 @@ export function InstallGuide({
               </div>
               <p className="ml-10 text-sm text-muted-foreground">Open your terminal and run:</p>
               <div className="ml-10 mt-2 flex items-center rounded-lg border border-border bg-card p-3 font-mono text-sm">
-                <code className="flex-1 overflow-x-auto">claude plugins install ~/codex-medicus</code>
-                <CopyButton text="claude plugins install ~/codex-medicus" />
+                <code className="flex-1 overflow-x-auto">claude plugins install ~/medsyniq</code>
+                <CopyButton text="claude plugins install ~/medsyniq" />
               </div>
             </div>
 

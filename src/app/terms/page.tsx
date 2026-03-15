@@ -3,7 +3,7 @@ import { Stethoscope } from "lucide-react";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Codex Medicus",
+  title: "Terms of Service | MedSynIQ",
   robots: { index: false, follow: true },
 };
 
@@ -16,7 +16,7 @@ export default function TermsPage() {
             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
               <Stethoscope className="h-4 w-4 text-gold" />
             </div>
-            <span className="font-serif text-lg tracking-wide">Codex Medicus</span>
+            <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
           </a>
         </div>
       </nav>
@@ -28,9 +28,9 @@ export default function TermsPage() {
 
           <h2>Agreement to Legal Terms</h2>
           <p>
-            We are HR Online Consulting LLC, doing business as ProFlow Labs AI and Codex Medicus
+            We are HR Online Consulting LLC, doing business as ProFlow Labs AI and MedSynIQ
             (&ldquo;Company,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;).
-            We provide the Codex Medicus medical intelligence platform and related services
+            We provide the MedSynIQ medical intelligence platform and related services
             (collectively, the &ldquo;Services&rdquo;).
           </p>
           <p>
@@ -42,13 +42,13 @@ export default function TermsPage() {
 
           <h2>1. Our Services</h2>
           <p>
-            Codex Medicus is an educational and informational tool that provides structured
+            MedSynIQ is an educational and informational tool that provides structured
             medical knowledge for use with AI assistants. It is not a medical device and does not
             provide medical advice, diagnosis, or treatment.
           </p>
           <ul>
             <li>
-              <strong>No patient data processing.</strong> Codex Medicus does not access, store,
+              <strong>No patient data processing.</strong> MedSynIQ does not access, store,
               or process individual patient health records. The plugin runs locally on the
               user&apos;s device.
             </li>
@@ -59,7 +59,7 @@ export default function TermsPage() {
             </li>
             <li>
               <strong>Compliance.</strong> Users are responsible for ensuring that their use of
-              Codex Medicus complies with all applicable laws, regulations, and institutional
+              MedSynIQ complies with all applicable laws, regulations, and institutional
               policies in their jurisdiction.
             </li>
           </ul>
@@ -83,18 +83,18 @@ export default function TermsPage() {
             <li>You have the legal capacity to abide by these Terms.</li>
             <li>You are not a minor.</li>
             <li>
-              You understand that Codex Medicus is an educational tool and not a substitute for
+              You understand that MedSynIQ is an educational tool and not a substitute for
               professional medical judgment.
             </li>
             <li>
-              You will not use Codex Medicus outputs as the sole basis for clinical decisions
+              You will not use MedSynIQ outputs as the sole basis for clinical decisions
               affecting patient care.
             </li>
           </ul>
 
           <h2>4. Purchases and Payment</h2>
           <p>
-            Codex Medicus Pro is available as a one-time purchase. Payment is processed securely
+            MedSynIQ Pro is available as a one-time purchase. Payment is processed securely
             through Stripe. By completing a purchase, you agree to the pricing displayed at
             checkout.
           </p>
@@ -119,7 +119,7 @@ export default function TermsPage() {
           <p>You agree not to:</p>
           <ul>
             <li>
-              Redistribute, resell, or share your Codex Medicus Pro license or download with
+              Redistribute, resell, or share your MedSynIQ Pro license or download with
               unauthorized parties.
             </li>
             <li>
@@ -143,7 +143,7 @@ export default function TermsPage() {
           <p>
             These Terms remain in force while you use the Services. We reserve the right to
             terminate your access if you breach these Terms or applicable law. Upon termination,
-            your license to use Codex Medicus is revoked.
+            your license to use MedSynIQ is revoked.
           </p>
 
           <h2>7. Disclaimer and Limitation of Liability</h2>
