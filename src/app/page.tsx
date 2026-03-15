@@ -518,7 +518,7 @@ export default function Home() {
           <div className="mx-auto mt-16 grid max-w-4xl items-stretch gap-8 md:grid-cols-2">
             {/* Lite */}
             <FadeIn direction="left" className="flex">
-              <Card className="w-full border-border/50 bg-card/50">
+              <Card className="w-full border-border/50 bg-card/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/5 hover:border-border">
                 <CardHeader>
                   <div className="text-sm font-medium tracking-wider text-muted-foreground uppercase">Lite</div>
                   <div className="mt-2 font-serif text-4xl">Free</div>
@@ -550,7 +550,7 @@ export default function Home() {
                   Recommended
                 </span>
               </div>
-              <Card className="w-full border-gold/30 bg-card/50 glow-gold-sm">
+              <Card className="w-full border-gold/30 bg-card/50 glow-gold-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gold/10 hover:border-gold/50">
                 <CardHeader>
                   <div className="text-sm font-medium tracking-wider text-gold uppercase">Pro</div>
                   <div className="mt-2 flex items-baseline gap-2">
