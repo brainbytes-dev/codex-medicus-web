@@ -421,13 +421,13 @@ export default function Home() {
                   <div className="text-sm font-medium tracking-wider text-muted-foreground uppercase">Lite</div>
                   <div className="mt-2 font-serif text-4xl">Free</div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    The essentials. Open-source, forever free.
+                    The essentials. Free to get started.
                   </p>
                 </CardHeader>
                 <CardContent>
                   <Separator className="mb-6" />
                   <ul className="space-y-3">
-                    {["5 core agents", "20 essential skills", "10 commands", "5 always-active rules", "Hook scripts included", "Clinical + Research + Review contexts", "MIT License"].map((f) => (
+                    {["5 core agents", "20 essential skills", "10 commands", "5 always-active rules", "Hook scripts included", "Clinical + Research + Review contexts", "Personal use"].map((f) => (
                       <li key={f} className="flex items-start gap-3 text-sm text-muted-foreground">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/60" />
                         {f}
@@ -442,13 +442,13 @@ export default function Home() {
             </FadeIn>
 
             {/* Pro */}
-            <FadeIn direction="right">
-              <Card className="relative h-full border-gold/20 bg-card/50 glow-gold-sm">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge className="bg-gold px-3 py-1 text-xs font-semibold text-primary-foreground">
-                    Recommended
-                  </Badge>
-                </div>
+            <FadeIn direction="right" className="relative pt-5">
+              <div className="absolute -top-0 left-1/2 z-20 -translate-x-1/2">
+                <span className="inline-block rounded-full bg-gold px-5 py-2 text-sm font-bold tracking-wide text-primary-foreground shadow-xl shadow-gold/30 uppercase">
+                  Recommended
+                </span>
+              </div>
+              <Card className="h-full border-gold/30 bg-card/50 glow-gold-sm pt-4">
                 <CardHeader>
                   <div className="text-sm font-medium tracking-wider text-gold uppercase">Pro</div>
                   <div className="mt-2 flex items-baseline gap-2">
@@ -488,6 +488,7 @@ export default function Home() {
               </Card>
             </FadeIn>
           </div>
+
 
           <FadeIn delay={0.3} className="mt-8 text-center">
             <p className="text-sm text-muted-foreground">
