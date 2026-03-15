@@ -366,8 +366,8 @@ export default function Home() {
                 desc: "References ESC, AHA/ACC, NICE, AWMF (S1-S3), WHO, KDIGO, GOLD, GINA. Compares guidelines across bodies and highlights where they diverge.",
               },
             ].map((f) => (
-              <StaggerItem key={f.title}>
-                <MagneticHover>
+              <StaggerItem key={f.title} className="h-full">
+                <MagneticHover className="h-full">
                   <Card className="h-full border-border/50 bg-card/50 transition-colors hover:bg-surface-hover">
                     <CardHeader>
                       <div className="relative mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gold-dim">
