@@ -21,17 +21,51 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Find completed checkout sessions for this email
-    const sessions = await getStripe().checkout.sessions.list({
+    const stripe = getStripe();
+    const emailLower = email.toLowerCase();
+
+    // Strategy 1: Search checkout sessions
+    const sessions = await stripe.checkout.sessions.list({
       limit: 100,
       status: "complete",
     });
 
-    const purchased = sessions.data.find(
-      (s) =>
-        s.customer_email?.toLowerCase() === email.toLowerCase() &&
-        s.metadata?.product === "codex-medicus-pro"
+    let purchased = sessions.data.find(
+      (s) => s.customer_email?.toLowerCase() === emailLower
     );
+
+    // Strategy 2: If not found, search by customer email via charges
+    if (!purchased) {
+      const customers = await stripe.customers.list({
+        email: emailLower,
+        limit: 10,
+      });
+
+      if (customers.data.length > 0) {
+        const customer = customers.data[0];
+        const charges = await stripe.charges.list({
+          customer: customer.id,
+          limit: 10,
+        });
+
+        const paidCharge = charges.data.find(
+          (c) => c.status === "succeeded" && c.paid
+        );
+
+        if (paidCharge) {
+          const token = generateDownloadToken(emailLower);
+          const currentVersion =
+            process.env.NEXT_PUBLIC_CURRENT_VERSION || "1.0.0";
+
+          return NextResponse.json({
+            email: emailLower,
+            purchaseDate: new Date(paidCharge.created * 1000).toISOString(),
+            currentVersion,
+            downloadUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/download?token=${token}`,
+          });
+        }
+      }
+    }
 
     if (!purchased) {
       return NextResponse.json(
@@ -40,8 +74,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const token = generateDownloadToken(email);
-    const currentVersion = process.env.NEXT_PUBLIC_CURRENT_VERSION || "1.0.0";
+    const token = generateDownloadToken(emailLower);
+    const currentVersion =
+      process.env.NEXT_PUBLIC_CURRENT_VERSION || "1.0.0";
 
     return NextResponse.json({
       email: purchased.customer_email,
