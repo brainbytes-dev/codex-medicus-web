@@ -515,10 +515,10 @@ export default function Home() {
             </p>
           </FadeIn>
 
-          <div className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-2">
+          <div className="mx-auto mt-16 grid max-w-4xl items-stretch gap-8 md:grid-cols-2">
             {/* Lite */}
-            <FadeIn direction="left">
-              <Card className="h-full border-border/50 bg-card/50">
+            <FadeIn direction="left" className="flex">
+              <Card className="w-full border-border/50 bg-card/50">
                 <CardHeader>
                   <div className="text-sm font-medium tracking-wider text-muted-foreground uppercase">Lite</div>
                   <div className="mt-2 font-serif text-4xl">Free</div>
@@ -544,13 +544,13 @@ export default function Home() {
             </FadeIn>
 
             {/* Pro */}
-            <FadeIn direction="right" className="relative pt-5">
-              <div className="absolute -top-0 left-1/2 z-20 -translate-x-1/2">
+            <FadeIn direction="right" className="relative flex">
+              <div className="absolute -top-3 left-1/2 z-20 -translate-x-1/2">
                 <span className="inline-block rounded-full bg-cta px-5 py-2 text-sm font-bold tracking-wide text-cta-foreground shadow-xl shadow-cta/30 uppercase">
                   Recommended
                 </span>
               </div>
-              <Card className="h-full border-gold/30 bg-card/50 glow-gold-sm pt-4">
+              <Card className="w-full border-gold/30 bg-card/50 glow-gold-sm">
                 <CardHeader>
                   <div className="text-sm font-medium tracking-wider text-gold uppercase">Pro</div>
                   <div className="mt-2 flex items-baseline gap-2">
