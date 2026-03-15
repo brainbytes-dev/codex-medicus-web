@@ -2,8 +2,6 @@
 
 import { useCallback, useState } from "react";
 import { LiteModal } from "@/components/lite-modal";
-import { ScrollToTop } from "@/components/scroll-to-top";
-import { CustomCursor } from "@/components/custom-cursor";
 import {
   Activity,
   ArrowRight,
@@ -41,7 +39,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/theme-toggle";
 import {
   FadeIn,
   StaggerChildren,
@@ -175,45 +172,8 @@ export default function Home() {
       <FloatingOrb className="right-[15%] top-[40%] bg-blue-500" size={200} delay={3} />
       <FloatingOrb className="left-[60%] top-[70%] bg-gold" size={250} delay={6} />
 
-      {/* Nav */}
-      <motion.nav
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl"
-      >
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
-              <Stethoscope className="h-4 w-4 text-gold" />
-            </div>
-            <span className="font-serif text-lg tracking-wide text-foreground">
-              MedSynIQ
-            </span>
-          </div>
-          <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#features" className="transition-colors hover:text-foreground">Features</a>
-            <a href="#agents" className="transition-colors hover:text-foreground">Agents</a>
-            <a href="#pricing" className="transition-colors hover:text-foreground">Pricing</a>
-            <a href="#faq" className="transition-colors hover:text-foreground">FAQ</a>
-          </div>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <button
-              onClick={() => setLiteOpen(true)}
-              className="hidden cursor-pointer text-sm text-muted-foreground transition-colors hover:text-foreground md:block"
-            >
-              Try Lite
-            </button>
-            <button onClick={handleCheckout} className={cn(buttonVariants(), "cursor-pointer bg-cta text-cta-foreground hover:bg-cta/90")}>
-              Get Pro
-            </button>
-          </div>
-        </div>
-      </motion.nav>
-
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-32">
+      <section className="relative overflow-hidden pt-16 pb-20 md:pt-28 md:pb-32">
         <div className="bg-radial-fade pointer-events-none absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-6 text-center">
           <motion.div
@@ -696,8 +656,6 @@ export default function Home() {
 
       <Footer />
       <LiteModal open={liteOpen} onClose={() => setLiteOpen(false)} />
-      <ScrollToTop />
-      <CustomCursor />
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Figtree } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/navbar";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { CustomCursor } from "@/components/custom-cursor";
 
 const serif = DM_Serif_Display({
   variable: "--font-serif",
@@ -36,7 +39,10 @@ export default function RootLayout({
       <body
         className={`${serif.variable} ${sans.variable} font-sans antialiased`}
       >
-        {children}
+        <Navbar />
+        <div className="pt-16">{children}</div>
+        <ScrollToTop />
+        <CustomCursor />
       </body>
     </html>
   );

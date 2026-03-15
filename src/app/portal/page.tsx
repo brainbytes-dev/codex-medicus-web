@@ -6,7 +6,6 @@ import {
   Download,
   Loader2,
   RefreshCw,
-  Stethoscope,
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -57,18 +56,6 @@ export default function PortalPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      {/* Nav */}
-      <nav className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-4xl items-center px-6">
-          <a href="/" className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
-              <Stethoscope className="h-4 w-4 text-gold" />
-            </div>
-            <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
-          </a>
-        </div>
-      </nav>
-
       <main className="flex-1 mx-auto max-w-2xl px-6 py-20">
         <FadeIn className="text-center">
           <h1 className="font-serif text-3xl tracking-tight">Customer Portal</h1>

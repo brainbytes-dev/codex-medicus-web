@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   Loader2,
   ShieldX,
-  Stethoscope,
 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -48,16 +47,6 @@ function SuccessContent() {
   if (state === "loading") {
     return (
       <div className="flex min-h-screen flex-col">
-        <nav className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
-          <div className="mx-auto flex h-16 max-w-4xl items-center px-6">
-            <a href="/" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
-                <Stethoscope className="h-4 w-4 text-gold" />
-              </div>
-              <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
-            </a>
-          </div>
-        </nav>
         <main className="flex flex-1 items-center justify-center">
           <div className="text-center">
             <Loader2 className="mx-auto h-8 w-8 animate-spin text-gold" />
@@ -72,16 +61,6 @@ function SuccessContent() {
   if (state === "invalid") {
     return (
       <div className="flex min-h-screen flex-col">
-        <nav className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
-          <div className="mx-auto flex h-16 max-w-4xl items-center px-6">
-            <a href="/" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
-                <Stethoscope className="h-4 w-4 text-gold" />
-              </div>
-              <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
-            </a>
-          </div>
-        </nav>
         <main className="flex flex-1 items-center justify-center px-6">
           <div className="max-w-md text-center">
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
@@ -109,17 +88,6 @@ function SuccessContent() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <nav className="border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-4xl items-center px-6">
-          <a href="/" className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
-              <Stethoscope className="h-4 w-4 text-gold" />
-            </div>
-            <span className="font-serif text-lg tracking-wide">MedSynIQ</span>
-          </a>
-        </div>
-      </nav>
-
       <main className="mx-auto max-w-2xl flex-1 px-6 py-16">
         <FadeIn className="text-center">
           <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
