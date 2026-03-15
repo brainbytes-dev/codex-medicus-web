@@ -73,15 +73,11 @@ const specialtyGroups = [
       { name: "Gastroenterology", icon: Activity },
       { name: "Nephrology", icon: Droplets },
       { name: "Endocrinology", icon: Scale },
-      { name: "Hematology-Oncology", icon: Microscope },
-      { name: "Rheumatology", icon: Bone },
       { name: "Infectious Disease", icon: Syringe },
-      { name: "Geriatrics", icon: Users },
-      { name: "Intensive Care", icon: HeartPulse },
     ],
   },
   {
-    category: "Surgery & Specialties",
+    category: "Surgery & Acute Care",
     items: [
       { name: "General Surgery", icon: Cross },
       { name: "Orthopedics", icon: Bone },
@@ -109,9 +105,8 @@ const specialtyGroups = [
       { name: "Gynecology", icon: Heart },
       { name: "Dermatology", icon: Radiation },
       { name: "General Practice", icon: Stethoscope },
-      { name: "Pain Medicine", icon: Pill },
-      { name: "Tropical Medicine", icon: Thermometer },
-      { name: "Rehabilitation", icon: Activity },
+      { name: "Intensive Care", icon: HeartPulse },
+      { name: "Geriatrics", icon: Users },
     ],
   },
 ];
@@ -471,7 +466,7 @@ export default function Home() {
           </div>
 
           <FadeIn delay={0.4} className="mt-10 text-center text-sm text-muted-foreground">
-            + Angiology, Hepatology, Psychosomatic Medicine, Vascular Surgery, Forensic Medicine, and more
+            + 11 more specialties included — and growing with every update
           </FadeIn>
         </div>
       </section>
