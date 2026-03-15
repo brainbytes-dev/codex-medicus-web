@@ -22,7 +22,7 @@ export default function PrivacyPage() {
       </nav>
 
       <main className="mx-auto max-w-3xl flex-1 px-6 py-16">
-        <article className="prose prose-sm prose-invert max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-h1:text-3xl prose-h2:mt-10 prose-h2:text-xl prose-a:text-gold prose-a:underline-offset-2 prose-strong:text-foreground">
+        <article className="prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-foreground prose-h1:text-3xl prose-h2:mt-10 prose-h2:text-xl prose-p:text-muted-foreground prose-li:text-muted-foreground prose-a:text-gold prose-a:underline-offset-2 prose-strong:text-foreground">
           <h1>Privacy Policy</h1>
           <p className="text-muted-foreground">Last updated: March 15, 2026</p>
 
