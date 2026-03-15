@@ -1,56 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 200" width="100%" height="100%">
-  <!-- Icon Group -->
-  <g transform="translate(20, 0)">
-    <!-- Solid Blue Medical Cross (Base & Left/Bottom Structure) -->
-    <path d="M 50 85 h 35 v -35 h 15 v 50 h 50 v 15 h -35 v 35 h -30 v -35 h -35 z" fill="#1E3A8A" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Main Medical Cross Base (Left, Top, Center, and Bottom segments) -->
+  <path d="M 19 40
+           H 35
+           V 24 C 35 21.8 36.8 20 39 20
+           H 51 C 53.2 20 55 21.8 55 24
+           V 76 C 55 78.2 53.2 80 51 80
+           H 39 C 36.8 80 35 78.2 35 76
+           V 60
+           H 19 C 16.8 60 15 58.2 15 56
+           V 44 C 15 41.8 16.8 40 19 40 Z"
+        fill="#0d9488" />
 
-    <!-- Teal Neural Network / Data Synthesis Links -->
-    <g stroke="#14B8A6" stroke-width="3.5" stroke-linecap="round">
-      <!-- Inner mesh connecting into the cross negative space -->
-      <line x1="100" y1="50" x2="115" y2="50" />
-      <line x1="115" y1="50" x2="115" y2="85" />
-      <line x1="115" y1="50" x2="132" y2="68" />
-      <line x1="100" y1="70" x2="115" y2="85" />
-      <line x1="100" y1="70" x2="132" y2="68" />
-      <line x1="115" y1="85" x2="132" y2="68" />
-      <line x1="115" y1="85" x2="150" y2="85" />
-      <line x1="132" y1="68" x2="150" y2="85" />
-      <line x1="150" y1="85" x2="150" y2="100" />
-      <line x1="130" y1="100" x2="150" y2="85" />
-      <line x1="130" y1="100" x2="132" y2="68" />
-      <line x1="100" y1="100" x2="115" y2="85" />
+  <!-- Data Synthesis Network Motif -->
+  <path d="M 55 50 L 68 36 L 81 50 L 68 64 Z
+           M 68 36 L 68 64
+           M 55 50 L 81 50"
+        stroke="#14b8a6" stroke-width="4" fill="none"
+        stroke-linecap="round" stroke-linejoin="round" />
 
-      <!-- Outer expansion (subtle brain lobe / intelligence growth) -->
-      <line x1="115" y1="50" x2="140" y2="40" />
-      <line x1="132" y1="68" x2="140" y2="40" />
-      <line x1="132" y1="68" x2="165" y2="60" />
-      <line x1="150" y1="85" x2="165" y2="60" />
-      <line x1="140" y1="40" x2="165" y2="60" />
-    </g>
-
-    <!-- Teal Data Points (Nodes) -->
-    <g fill="#14B8A6">
-      <!-- Outer Neural Nodes -->
-      <circle cx="140" cy="40" r="5" />
-      <circle cx="165" cy="60" r="5" />
-      
-      <!-- Inner Mesh Nodes -->
-      <circle cx="115" cy="50" r="5" />
-      <circle cx="115" cy="85" r="5" />
-      <circle cx="132" cy="68" r="5" />
-      <circle cx="150" cy="85" r="5" />
-      
-      <!-- Synthesis/Anchor Nodes bridging the blue edge -->
-      <circle cx="100" cy="50" r="5" />
-      <circle cx="100" cy="70" r="5" />
-      <circle cx="100" cy="100" r="6.5" /> <!-- Core synthesis hub -->
-      <circle cx="130" cy="100" r="5" />
-      <circle cx="150" cy="100" r="5" />
-    </g>
-  </g>
-
-  <!-- Typography -->
-  <text x="230" y="122" font-family="'Plus Jakarta Sans', 'Inter', 'Montserrat', 'Segoe UI', system-ui, sans-serif" font-size="64" font-weight="800" letter-spacing="-1.5">
-    <tspan fill="#1E3A8A">MedSyn</tspan><tspan fill="#14B8A6">IQ</tspan>
-  </text>
+  <!-- Network Nodes -->
+  <circle cx="68" cy="36" r="5" fill="#14b8a6" />
+  <circle cx="68" cy="64" r="5" fill="#14b8a6" />
+  <circle cx="81" cy="50" r="5" fill="#14b8a6" />
 </svg>
