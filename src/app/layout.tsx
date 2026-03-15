@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { CustomCursor } from "@/components/custom-cursor";
+import { HashScroller } from "@/components/hash-scroller";
 
 const serif = DM_Serif_Display({
   variable: "--font-serif",
@@ -43,6 +44,7 @@ export default function RootLayout({
         <div className="pt-16">{children}</div>
         <ScrollToTop />
         <CustomCursor />
+        <HashScroller />
       </body>
     </html>
   );
