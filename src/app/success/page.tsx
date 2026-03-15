@@ -118,7 +118,7 @@ function SuccessContent() {
               use the Customer Portal to download your copy.
             </p>
             <div className="mt-8 flex flex-col gap-3">
-              <a href="/portal" className={cn(buttonVariants(), "cursor-pointer bg-gold text-primary-foreground hover:bg-gold/90")}>
+              <a href="/portal" className={cn(buttonVariants(), "cursor-pointer bg-cta text-cta-foreground hover:bg-cta/90")}>
                 Go to Customer Portal
               </a>
               <a href="/#pricing" className={cn(buttonVariants({ variant: "outline" }), "cursor-pointer")}>
@@ -173,7 +173,7 @@ function SuccessContent() {
             <CardContent>
               <a
                 href={downloadUrl || "#"}
-                className={cn(buttonVariants(), "w-full cursor-pointer gap-2 bg-gold text-primary-foreground hover:bg-gold/90")}
+                className={cn(buttonVariants(), "w-full cursor-pointer gap-2 bg-cta text-cta-foreground hover:bg-cta/90")}
               >
                 <Download className="h-4 w-4" />
                 Download codex-medicus-pro-v{version}.zip

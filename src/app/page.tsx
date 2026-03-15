@@ -210,7 +210,7 @@ export default function Home() {
             >
               Try Lite
             </button>
-            <button onClick={handleCheckout} className={cn(buttonVariants(), "cursor-pointer bg-gold text-primary-foreground hover:bg-gold/90")}>
+            <button onClick={handleCheckout} className={cn(buttonVariants(), "cursor-pointer bg-cta text-cta-foreground hover:bg-cta/90")}>
               Get Pro
             </button>
           </div>
@@ -262,7 +262,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <button onClick={handleCheckout} className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-gold px-8 text-base font-semibold text-primary-foreground hover:bg-gold/90 transition-all hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]")}>
+            <button onClick={handleCheckout} className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-cta px-8 text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>
               Get Codex Medicus Pro
               <ArrowRight className="h-4 w-4" />
             </button>
@@ -454,7 +454,7 @@ export default function Home() {
                         whileHover={{ scale: 1.04, y: -2 }}
                         whileTap={{ scale: 0.97 }}
                         transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                        className="group flex cursor-default items-center gap-3 rounded-lg border border-border/40 bg-card/30 px-4 py-3 transition-all hover:border-gold/25 hover:bg-card/60 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
+                        className="group flex cursor-default items-center gap-3 rounded-lg border border-border/40 bg-card/30 px-4 py-3 transition-all hover:border-gold/25 hover:bg-card/60 hover:shadow-[0_0_20px_rgba(20,184,166,0.08)]"
                       >
                         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-gold-dim transition-colors group-hover:bg-gold/20">
                           <item.icon className="h-4 w-4 text-gold" />
@@ -546,7 +546,7 @@ export default function Home() {
             {/* Pro */}
             <FadeIn direction="right" className="relative pt-5">
               <div className="absolute -top-0 left-1/2 z-20 -translate-x-1/2">
-                <span className="inline-block rounded-full bg-gold px-5 py-2 text-sm font-bold tracking-wide text-primary-foreground shadow-xl shadow-gold/30 uppercase">
+                <span className="inline-block rounded-full bg-cta px-5 py-2 text-sm font-bold tracking-wide text-cta-foreground shadow-xl shadow-cta/30 uppercase">
                   Recommended
                 </span>
               </div>
@@ -583,7 +583,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={handleCheckout} className={cn(buttonVariants(), "mt-8 w-full cursor-pointer gap-2 bg-gold text-base font-semibold text-primary-foreground hover:bg-gold/90 transition-all hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]")}>
+                  <button onClick={handleCheckout} className={cn(buttonVariants(), "mt-8 w-full cursor-pointer gap-2 bg-cta text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>
                     Get Codex Medicus Pro
                     <ArrowRight className="h-4 w-4" />
                   </button>
@@ -690,7 +690,7 @@ export default function Home() {
               with evidence, with safety checks, with clinical rigor.
             </p>
             <div className="mt-10">
-              <button onClick={handleCheckout} className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-gold px-8 text-base font-semibold text-primary-foreground hover:bg-gold/90 transition-all hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]")}>
+              <button onClick={handleCheckout} className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-cta px-8 text-base font-semibold text-cta-foreground hover:bg-cta/90 transition-all hover:shadow-[0_0_30px_rgba(20,184,166,0.25)]")}>
                 Get Codex Medicus Pro — $149
                 <ArrowRight className="h-4 w-4" />
               </button>

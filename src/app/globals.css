@@ -29,6 +29,8 @@
   --color-gold-dim: var(--gold-dim);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -37,53 +39,59 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #f8f7f4;
-  --foreground: #1a1a2e;
+  /* Light: Clean clinical white with teal accents */
+  --background: #f8fafb;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #1a1a2e;
+  --card-foreground: #0f172a;
   --popover: #ffffff;
-  --popover-foreground: #1a1a2e;
-  --primary: #9a7b2e;
+  --popover-foreground: #0f172a;
+  --primary: #0d9488;
   --primary-foreground: #ffffff;
-  --secondary: #f0ece3;
-  --secondary-foreground: #1a1a2e;
-  --muted: #f0ece3;
-  --muted-foreground: #6b7280;
-  --accent: #f0ece3;
-  --accent-foreground: #1a1a2e;
+  --secondary: #f0fdfa;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f0fdfa;
+  --accent-foreground: #0f172a;
   --destructive: #ef4444;
   --border: rgba(0, 0, 0, 0.08);
   --input: rgba(0, 0, 0, 0.08);
-  --ring: #9a7b2e;
-  --gold: #9a7b2e;
-  --gold-dim: rgba(154, 123, 46, 0.1);
+  --ring: #0d9488;
+  --gold: #0d9488;
+  --gold-dim: rgba(13, 148, 136, 0.08);
   --surface: rgba(0, 0, 0, 0.02);
   --surface-hover: rgba(0, 0, 0, 0.04);
+  --cta: #b45309;
+  --cta-foreground: #ffffff;
 }
 
 .dark {
-  --background: #0a0e17;
-  --foreground: #e8ecf4;
-  --card: #111827;
-  --card-foreground: #e8ecf4;
-  --popover: #111827;
-  --popover-foreground: #e8ecf4;
-  --primary: #c9a84c;
-  --primary-foreground: #0a0e17;
-  --secondary: #1e293b;
-  --secondary-foreground: #e8ecf4;
-  --muted: #1e293b;
+  /* Dark: Deep navy with teal/cyan accents */
+  --background: #0a1628;
+  --foreground: #e2e8f0;
+  --card: #0f1d32;
+  --card-foreground: #e2e8f0;
+  --popover: #0f1d32;
+  --popover-foreground: #e2e8f0;
+  --primary: #14b8a6;
+  --primary-foreground: #0a1628;
+  --secondary: #162033;
+  --secondary-foreground: #e2e8f0;
+  --muted: #162033;
   --muted-foreground: #94a3b8;
-  --accent: #1e293b;
-  --accent-foreground: #e8ecf4;
+  --accent: #162033;
+  --accent-foreground: #e2e8f0;
   --destructive: #ef4444;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.12);
-  --ring: #c9a84c;
-  --gold: #c9a84c;
-  --gold-dim: rgba(201, 168, 76, 0.15);
+  --border: rgba(255, 255, 255, 0.07);
+  --input: rgba(255, 255, 255, 0.10);
+  --ring: #14b8a6;
+  --gold: #14b8a6;
+  --gold-dim: rgba(20, 184, 166, 0.12);
   --surface: rgba(255, 255, 255, 0.03);
   --surface-hover: rgba(255, 255, 255, 0.06);
+  --cta: #f59e0b;
+  --cta-foreground: #0a1628;
 }
 
 @layer base {
@@ -103,28 +111,28 @@
     text-wrap: balance;
   }
   .gradient-gold {
-    background: linear-gradient(135deg, var(--gold) 0%, #e8d48b 50%, var(--gold) 100%);
+    background: linear-gradient(135deg, #0d9488 0%, #5eead4 50%, #14b8a6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .glow-gold {
-    box-shadow: 0 0 40px rgba(201, 168, 76, 0.12), 0 0 80px rgba(201, 168, 76, 0.06);
+    box-shadow: 0 0 40px rgba(20, 184, 166, 0.15), 0 0 80px rgba(20, 184, 166, 0.08);
   }
   .glow-gold-sm {
-    box-shadow: 0 0 20px rgba(201, 168, 76, 0.08);
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.10);
   }
   .border-gold-subtle {
-    border-color: rgba(var(--gold-rgb, 201, 168, 76), 0.2);
+    border-color: rgba(20, 184, 166, 0.2);
   }
   .bg-grid {
     background-image:
-      linear-gradient(rgba(var(--gold-rgb, 201, 168, 76), 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(var(--gold-rgb, 201, 168, 76), 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(20, 184, 166, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20, 184, 166, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .bg-radial-fade {
-    background: radial-gradient(ellipse at 50% 0%, rgba(var(--gold-rgb, 201, 168, 76), 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(20, 184, 166, 0.08) 0%, transparent 60%);
   }
 }
 

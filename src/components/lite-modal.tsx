@@ -125,7 +125,7 @@ export function LiteModal({
                     <Button
                       type="submit"
                       disabled={loading}
-                      className="mt-3 w-full cursor-pointer bg-gold text-primary-foreground hover:bg-gold/90"
+                      className="mt-3 w-full cursor-pointer bg-cta text-cta-foreground hover:bg-cta/90"
                     >
                       {loading ? "..." : "Get Install Instructions"}
                     </Button>

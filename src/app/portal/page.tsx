@@ -99,7 +99,7 @@ export default function PortalPage() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full cursor-pointer bg-gold text-primary-foreground hover:bg-gold/90"
+                  className="w-full cursor-pointer bg-cta text-cta-foreground hover:bg-cta/90"
                 >
                   {loading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -156,7 +156,7 @@ export default function PortalPage() {
                         href={data.downloadUrl}
                         className={cn(
                           buttonVariants(),
-                          "w-full cursor-pointer gap-2 bg-gold text-primary-foreground hover:bg-gold/90"
+                          "w-full cursor-pointer gap-2 bg-cta text-cta-foreground hover:bg-cta/90"
                         )}
                       >
                         <Download className="h-4 w-4" />
