@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { LiteModal } from "@/components/lite-modal";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import {
   Activity,
   ArrowRight,
@@ -699,6 +700,7 @@ export default function Home() {
 
       <Footer />
       <LiteModal open={liteOpen} onClose={() => setLiteOpen(false)} />
+      <ScrollToTop />
     </div>
   );
 }
