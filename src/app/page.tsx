@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import {
   Activity,
   ArrowRight,
@@ -152,6 +153,20 @@ const faqs = [
 ];
 
 export default function Home() {
+  const handleCheckout = useCallback(async () => {
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const { url } = await res.json();
+      if (url) window.location.href = url;
+    } catch (error) {
+      console.error("Checkout error:", error);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background bg-grid">
       {/* Floating orbs */}
@@ -562,10 +577,10 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a href="#" className={cn(buttonVariants(), "mt-8 w-full cursor-pointer gap-2 bg-gold text-base font-semibold text-primary-foreground hover:bg-gold/90 transition-all hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]")}>
+                  <button onClick={handleCheckout} className={cn(buttonVariants(), "mt-8 w-full cursor-pointer gap-2 bg-gold text-base font-semibold text-primary-foreground hover:bg-gold/90 transition-all hover:shadow-[0_0_30px_rgba(201,168,76,0.3)]")}>
                     Get Codex Medicus Pro
                     <ArrowRight className="h-4 w-4" />
-                  </a>
+                  </button>
                 </CardContent>
               </Card>
             </FadeIn>
