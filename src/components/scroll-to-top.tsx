@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Activity } from "lucide-react";
 
 export function ScrollToTop() {
   const [progress, setProgress] = useState(0);
@@ -35,10 +36,6 @@ export function ScrollToTop() {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - progress * circumference;
-
-  // Real ECG PQRST waveform path (simplified but anatomically correct)
-  // P wave → QRS complex → T wave
-  const ecgPath = "M1,10 L3,10 Q4,10 4.5,9.5 Q5,9 5.5,10 L6,10 L6.5,10 L7,12 L7.5,3 L8,14 L8.5,6 L9,10 L10,10 Q10.5,10 11,9 Q11.5,8 12,10 L14,10";
 
   return (
     <AnimatePresence>
@@ -88,23 +85,8 @@ export function ScrollToTop() {
             />
           </svg>
 
-          {/* ECG PQRST waveform */}
-          <svg
-            width="22"
-            height="18"
-            viewBox="0 4 15 10"
-            fill="none"
-            className="relative"
-          >
-            <path
-              d={ecgPath}
-              stroke="var(--gold)"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
+          {/* ECG icon */}
+          <Activity className="relative h-5 w-5 text-gold" />
         </motion.button>
       )}
     </AnimatePresence>
