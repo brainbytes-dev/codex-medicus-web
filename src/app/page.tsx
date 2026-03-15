@@ -1,65 +1,562 @@
-import Image from "next/image";
+"use client";
+
+import {
+  ArrowRight,
+  Brain,
+  CheckCircle2,
+  ChevronDown,
+  FileText,
+  FlaskConical,
+  Heart,
+  Microscope,
+  Pill,
+  Shield,
+  Stethoscope,
+  Terminal,
+  Users,
+  Zap,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
+
+const agents = [
+  { name: "clinical-reasoner", desc: "Differential diagnosis, Bayesian reasoning", icon: Brain, model: "opus" },
+  { name: "evidence-appraiser", desc: "Critical appraisal, GRADE, NNT/NNH", icon: FileText, model: "opus" },
+  { name: "pharmacologist", desc: "Drug interactions, CYP450, dosing", icon: Pill, model: "opus" },
+  { name: "biostatistician", desc: "Hypothesis testing, survival analysis", icon: FlaskConical, model: "opus" },
+  { name: "emergency-physician", desc: "ABCDE, triage, resuscitation", icon: Zap, model: "opus" },
+  { name: "intensivist", desc: "Ventilation, sepsis bundles, ICU", icon: Heart, model: "opus" },
+  { name: "oncologist", desc: "TNM staging, immunotherapy, tumor boards", icon: Microscope, model: "opus" },
+  { name: "surgeon", desc: "Perioperative care, ERAS, complications", icon: Stethoscope, model: "opus" },
+];
+
+const specialties = [
+  "Cardiology", "Pulmonology", "Gastroenterology", "Nephrology",
+  "Endocrinology", "Hematology-Oncology", "Rheumatology", "Infectious Disease",
+  "Neurology", "Psychiatry", "Pediatrics", "Gynecology",
+  "Anesthesiology", "Emergency Medicine", "Radiology", "Dermatology",
+  "Ophthalmology", "ENT", "Orthopedics", "Geriatrics",
+  "Pain Medicine", "Tropical Medicine", "Forensic Medicine", "General Practice",
+];
+
+const commands = [
+  { cmd: "/differential", desc: "Generate structured differential diagnosis" },
+  { cmd: "/drug-check", desc: "Check interactions, doses, contraindications" },
+  { cmd: "/evidence-search", desc: "Search evidence using PICO framework" },
+  { cmd: "/lab-interpret", desc: "Interpret laboratory panels with correlation" },
+  { cmd: "/study-design", desc: "Design a clinical study with endpoints" },
+  { cmd: "/sample-size", desc: "Calculate sample size and power" },
+  { cmd: "/manuscript", desc: "Structure papers with reporting guidelines" },
+  { cmd: "/tumor-board", desc: "Prepare tumor board presentations" },
+  { cmd: "/guideline", desc: "Find and interpret clinical guidelines" },
+  { cmd: "/meta-analysis", desc: "Design and interpret meta-analyses" },
+];
+
+const faqs = [
+  {
+    q: "Is this a medical device?",
+    a: "No. Codex Medicus is an AI-assisted tool for informational and educational purposes only. It is not a medical device, does not provide medical advice, and is not a substitute for professional clinical judgment.",
+  },
+  {
+    q: "Who is this built for?",
+    a: "Physicians, medical researchers, clinical trialists, pharmacologists, medical students, and anyone who works with clinical evidence and medical literature professionally.",
+  },
+  {
+    q: "What AI platforms does it support?",
+    a: "Claude Code (primary), OpenAI Codex, Cursor, OpenCode, and Google Gemini CLI. Multi-harness support is included in the Pro edition.",
+  },
+  {
+    q: "How is this different from ChatGPT for medical questions?",
+    a: "Codex Medicus provides structured clinical reasoning with 142 specialized skills that enforce evidence levels (GRADE/CEBM), cite specific guidelines (ESC, AHA, NICE, AWMF), and include safety checks for drug interactions and contraindications. It thinks like a clinician, not a chatbot.",
+  },
+  {
+    q: "Is my patient data safe?",
+    a: "Codex Medicus includes HIPAA/GDPR-compliant hooks that actively scan for and flag Protected Health Information (PHI). The plugin runs locally — no patient data is sent to our servers.",
+  },
+  {
+    q: "Can I try before I buy?",
+    a: "Yes. Codex Medicus Lite is completely free and open-source, with 5 agents, 20 skills, and 10 commands covering the essentials.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-background bg-grid">
+      {/* Nav */}
+      <nav className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-gold-dim">
+              <Stethoscope className="h-4 w-4 text-gold" />
+            </div>
+            <span className="font-serif text-lg tracking-wide text-foreground">
+              Codex Medicus
+            </span>
+          </div>
+          <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
+            <a href="#features" className="transition-colors hover:text-foreground">Features</a>
+            <a href="#agents" className="transition-colors hover:text-foreground">Agents</a>
+            <a href="#pricing" className="transition-colors hover:text-foreground">Pricing</a>
+            <a href="#faq" className="transition-colors hover:text-foreground">FAQ</a>
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://github.com/brainbytes-dev/codex-medicus-lite"
+              className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:block"
+            >
+              Try Lite
+            </a>
+            <a href="#pricing" className={cn(buttonVariants(), "cursor-pointer bg-gold text-background hover:bg-gold/90")}>
+              Get Pro
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-32">
+        <div className="bg-radial-fade pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-6 text-center">
+          <Badge
+            variant="outline"
+            className="mb-6 border-gold-subtle px-4 py-1.5 text-xs font-medium tracking-wider text-gold uppercase"
+          >
+            Built by a Physician
+          </Badge>
+          <h1 className="font-serif text-4xl leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
+            Medical Intelligence
+            <br />
+            <span className="gradient-gold">for AI Assistants</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            27 specialized agents. 142 domain skills. 30 commands.
+            From differential diagnosis to meta-analysis — clinical expertise
+            that thinks like a physician.
           </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href="#pricing" className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-gold px-8 text-base font-semibold text-background hover:bg-gold/90")}>
+              Get Codex Medicus Pro
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href="https://github.com/brainbytes-dev/codex-medicus-lite" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "cursor-pointer gap-2 border-border px-8 text-base")}>
+              <Terminal className="h-4 w-4" />
+              Try Lite — Free
+            </a>
+          </div>
+
+          {/* Terminal Preview */}
+          <div className="mx-auto mt-16 max-w-2xl overflow-hidden rounded-xl border border-border glow-gold">
+            <div className="flex items-center gap-2 border-b border-border bg-card/80 px-4 py-3">
+              <div className="h-3 w-3 rounded-full bg-red-500/60" />
+              <div className="h-3 w-3 rounded-full bg-yellow-500/60" />
+              <div className="h-3 w-3 rounded-full bg-green-500/60" />
+              <span className="ml-2 text-xs text-muted-foreground">claude</span>
+            </div>
+            <div className="space-y-3 bg-card/40 p-6 text-left font-mono text-sm">
+              <p className="text-muted-foreground">
+                <span className="text-gold">$</span> /differential 65-year-old, acute chest pain, diaphoresis, ST-elevation V1-V4
+              </p>
+              <div className="rounded-lg border border-border/50 bg-surface p-4">
+                <p className="mb-2 font-sans text-xs font-semibold tracking-wider text-gold uppercase">
+                  Differential Diagnosis — Bayesian Approach
+                </p>
+                <p className="text-muted-foreground">
+                  <span className="text-foreground">1. STEMI</span> — Pre-test probability: 92% (ST-elevation + symptoms)
+                  <br />
+                  <span className="text-foreground">2. Aortic dissection</span> — Pre-test: 3% (no tearing pain, no pulse deficit)
+                  <br />
+                  <span className="text-foreground">3. Pulmonary embolism</span> — Pre-test: 2% (Wells: low risk)
+                  <br />
+                  <span className="mt-2 block text-xs text-gold">
+                    Evidence: ESC 2023 STEMI Guidelines, Level I-A
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="border-y border-border/50 bg-card/30">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px md:grid-cols-4">
+          {[
+            { n: "27", label: "Specialized Agents" },
+            { n: "142", label: "Domain Skills" },
+            { n: "30", label: "Commands" },
+            { n: "35", label: "Clinical Specialties" },
+          ].map((s) => (
+            <div key={s.label} className="px-6 py-8 text-center">
+              <div className="font-serif text-3xl text-gold md:text-4xl">{s.n}</div>
+              <div className="mt-1 text-sm text-muted-foreground">{s.label}</div>
+            </div>
+          ))}
         </div>
-      </main>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="py-20 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">
+              Evidence-Based by Design
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Every clinical output cites evidence levels. Every drug mention checks interactions.
+              Every recommendation follows current guidelines.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: Shield,
+                title: "5 Always-Active Rules",
+                desc: "EBM evidence levels, patient safety checks, medical disclaimers, HIPAA/GDPR data privacy, and research integrity — enforced on every output.",
+              },
+              {
+                icon: Pill,
+                title: "Drug Interaction Hooks",
+                desc: "Automated CYP450 interaction checks for 30+ critical drug pairs. Flags contraindications, dose adjustments for renal/hepatic impairment, and pregnancy categories.",
+              },
+              {
+                icon: FileText,
+                title: "Guideline-Aware",
+                desc: "References ESC, AHA/ACC, NICE, AWMF (S1-S3), WHO, KDIGO, GOLD, GINA. Compares guidelines across bodies and highlights where they diverge.",
+              },
+            ].map((f) => (
+              <Card key={f.title} className="border-border/50 bg-card/50 transition-colors hover:bg-surface-hover">
+                <CardHeader>
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gold-dim">
+                    <f.icon className="h-5 w-5 text-gold" />
+                  </div>
+                  <CardTitle className="text-lg">{f.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Agents */}
+      <section id="agents" className="border-t border-border/50 py-20 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">
+              27 Specialized Agents
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Each agent is a deep expert with structured processes, worked examples,
+              and clinical red flags. Here are some of them.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {agents.map((a) => (
+              <div
+                key={a.name}
+                className="group rounded-xl border border-border/50 bg-card/30 p-5 transition-all hover:border-gold-subtle hover:bg-card/60"
+              >
+                <div className="mb-3 flex items-center justify-between">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gold-dim transition-colors group-hover:bg-gold/20">
+                    <a.icon className="h-4 w-4 text-gold" />
+                  </div>
+                  <Badge variant="outline" className="border-border/50 text-[10px] font-normal text-muted-foreground uppercase">
+                    {a.model}
+                  </Badge>
+                </div>
+                <h3 className="text-sm font-semibold">{a.name}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{a.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center text-sm text-muted-foreground">
+            + 19 more agents including systematic-reviewer, biostatistician, regulatory-affairs, precision-medicine, and more
+          </div>
+        </div>
+      </section>
+
+      {/* Specialties */}
+      <section className="border-t border-border/50 bg-card/20 py-20 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">
+              35 Clinical Specialties
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Deep domain knowledge for every major medical discipline —
+              key conditions, diagnostic approaches, first-line treatments, red flags, and guidelines.
+            </p>
+          </div>
+          <div className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-2">
+            {specialties.map((s) => (
+              <Badge
+                key={s}
+                variant="outline"
+                className="border-border/60 bg-surface px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-gold-subtle hover:text-foreground"
+              >
+                {s}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Commands */}
+      <section className="border-t border-border/50 py-20 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">
+              30 Slash Commands
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Type a command. Get clinical-grade output.
+            </p>
+          </div>
+          <div className="mx-auto mt-12 max-w-3xl space-y-1">
+            {commands.map((c) => (
+              <div
+                key={c.cmd}
+                className="flex items-center justify-between rounded-lg px-4 py-3 transition-colors hover:bg-surface"
+              >
+                <code className="text-sm font-semibold text-gold">{c.cmd}</code>
+                <span className="text-sm text-muted-foreground">{c.desc}</span>
+              </div>
+            ))}
+            <div className="pt-2 text-center text-sm text-muted-foreground">
+              + 20 more commands
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="border-t border-border/50 bg-card/20 py-20 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">
+              Choose Your Edition
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Start free with Lite. Unlock everything with Pro.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-16 grid max-w-4xl gap-8 md:grid-cols-2">
+            {/* Lite */}
+            <Card className="border-border/50 bg-card/50">
+              <CardHeader>
+                <div className="text-sm font-medium tracking-wider text-muted-foreground uppercase">Lite</div>
+                <div className="mt-2 font-serif text-4xl">Free</div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  The essentials. Open-source, forever free.
+                </p>
+              </CardHeader>
+              <CardContent>
+                <Separator className="mb-6" />
+                <ul className="space-y-3">
+                  {[
+                    "5 core agents",
+                    "20 essential skills",
+                    "10 commands",
+                    "5 always-active rules",
+                    "Hook scripts included",
+                    "Clinical + Research + Review contexts",
+                    "MIT License",
+                  ].map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm text-muted-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/60" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a href="https://github.com/brainbytes-dev/codex-medicus-lite" className={cn(buttonVariants({ variant: "outline" }), "mt-8 w-full cursor-pointer")}>
+                  Get Lite — Free
+                </a>
+              </CardContent>
+            </Card>
+
+            {/* Pro */}
+            <Card className="relative border-gold-subtle bg-card/50 glow-gold-sm">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <Badge className="bg-gold px-3 py-1 text-xs font-semibold text-background">
+                  Recommended
+                </Badge>
+              </div>
+              <CardHeader>
+                <div className="text-sm font-medium tracking-wider text-gold uppercase">Pro</div>
+                <div className="mt-2 flex items-baseline gap-2">
+                  <span className="font-serif text-4xl text-foreground">$149</span>
+                  <span className="text-sm text-muted-foreground">one-time</span>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  The full medical intelligence system. Lifetime access.
+                </p>
+              </CardHeader>
+              <CardContent>
+                <Separator className="mb-6" />
+                <ul className="space-y-3">
+                  {[
+                    "27 specialized agents",
+                    "142 domain skills",
+                    "30 slash commands",
+                    "35 clinical specialties",
+                    "Drug development & regulatory (15 skills)",
+                    "Pharmacovigilance & HEOR (9 skills)",
+                    "Multi-harness (Codex, Cursor, OpenCode, Gemini)",
+                    "Specialty agents (ER, ICU, Oncology, Surgery)",
+                    "6 hook scripts with drug interaction checks",
+                    "Priority support",
+                  ].map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-sm">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a href="#" className={cn(buttonVariants(), "mt-8 w-full cursor-pointer gap-2 bg-gold text-base font-semibold text-background hover:bg-gold/90")}>
+                  Get Codex Medicus Pro
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              Need enterprise pricing for your hospital or research institution?{" "}
+              <a href="mailto:contact@brainbytes.dev" className="text-gold underline underline-offset-4 transition-colors hover:text-gold/80">
+                Contact us
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="border-t border-border/50 py-20 md:py-32">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center">
+            <h2 className="font-serif text-3xl tracking-tight md:text-4xl">
+              Built by a Physician
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Every agent, every skill, every clinical score has been reviewed for accuracy.
+              This is not a generic AI prompt collection — it is structured clinical knowledge,
+              built the way a physician thinks.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-16 grid max-w-4xl gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: Stethoscope,
+                title: "Clinically Accurate",
+                desc: "Real clinical frameworks — CASP, GRADE, CONSORT, Wells Score, CHA₂DS₂-VASc. Not AI-generated summaries.",
+              },
+              {
+                icon: Users,
+                title: "Multi-Harness",
+                desc: "Works with Claude Code, Codex, Cursor, OpenCode, and Gemini CLI. Use your preferred AI platform.",
+              },
+              {
+                icon: Shield,
+                title: "Safety-First",
+                desc: "PHI detection hooks, drug interaction warnings, evidence level enforcement, and medical disclaimers — built in.",
+              },
+            ].map((t) => (
+              <div key={t.title} className="text-center">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gold-dim">
+                  <t.icon className="h-6 w-6 text-gold" />
+                </div>
+                <h3 className="text-sm font-semibold">{t.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="border-t border-border/50 bg-card/20 py-20 md:py-32">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="text-center font-serif text-3xl tracking-tight md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <div className="mt-12 space-y-0 divide-y divide-border/50">
+            {faqs.map((f) => (
+              <details key={f.q} className="group">
+                <summary className="flex cursor-pointer items-center justify-between py-5 text-sm font-medium transition-colors hover:text-gold">
+                  {f.q}
+                  <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+                </summary>
+                <p className="pb-5 text-sm leading-relaxed text-muted-foreground">
+                  {f.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-border/50 py-20 md:py-32">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <h2 className="font-serif text-3xl tracking-tight md:text-5xl">
+            Clinical intelligence,
+            <br />
+            <span className="gradient-gold">one install away.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-lg text-muted-foreground">
+            Join medical professionals who use AI the way it should be used —
+            with evidence, with safety checks, with clinical rigor.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href="#pricing" className={cn(buttonVariants({ size: "lg" }), "cursor-pointer gap-2 bg-gold px-8 text-base font-semibold text-background hover:bg-gold/90")}>
+              Get Codex Medicus Pro — $149
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Disclaimer */}
+      <section className="border-t border-border/50 bg-card/30 py-8">
+        <div className="mx-auto max-w-3xl px-6 text-center text-xs leading-relaxed text-muted-foreground/70">
+          <strong>Medical Disclaimer:</strong> Codex Medicus provides AI-assisted tools for
+          informational and educational purposes only. It is not a medical device and does not
+          provide medical advice, diagnosis, or treatment. All clinical outputs must be verified
+          by qualified healthcare professionals. Always exercise independent professional medical
+          judgment.
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border/50 py-8">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
+          <div className="flex items-center gap-2">
+            <Stethoscope className="h-4 w-4 text-gold/60" />
+            <span className="text-sm text-muted-foreground">
+              Codex Medicus by Brain Bytes
+            </span>
+          </div>
+          <div className="flex items-center gap-6 text-xs text-muted-foreground">
+            <a href="mailto:contact@brainbytes.dev" className="transition-colors hover:text-foreground">
+              Contact
+            </a>
+            <a href="https://github.com/brainbytes-dev" className="transition-colors hover:text-foreground">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
