@@ -508,7 +508,7 @@ export default function Home() {
                 <CardContent>
                   <Separator className="mb-6" />
                   <ul className="space-y-3">
-                    {["5 core agents", "20 essential skills", "10 commands", "5 always-active rules", "Hook scripts included", "Clinical + Research + Review contexts", "Personal use"].map((f) => (
+                    {["5 core agents", "20 essential skills", "10 commands", "5 always-active rules", "Hook scripts included", "Clinical + Research + Review contexts", "Personal use", "No future updates"].map((f) => (
                       <li key={f} className="flex items-start gap-3 text-sm text-muted-foreground">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/60" />
                         {f}
@@ -537,7 +537,7 @@ export default function Home() {
                     <span className="text-sm text-muted-foreground">one-time</span>
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    The full medical intelligence system. Lifetime access.
+                    The full system. Lifetime access with continuous updates.
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -553,6 +553,7 @@ export default function Home() {
                       "Multi-harness (Codex, Cursor, OpenCode, Gemini)",
                       "Specialty agents (ER, ICU, Oncology, Surgery)",
                       "6 hook scripts with drug interaction checks",
+                      "Continuous updates — new skills, agents & guidelines",
                       "Priority support",
                     ].map((f) => (
                       <li key={f} className="flex items-start gap-3 text-sm">
